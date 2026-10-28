@@ -1,0 +1,731 @@
+<!doctype html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<title>Guru Subtropical Brief</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Noto+Sans+Georgian:wght@400;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap">
+<style>
+/* Layout: an analyst's research book. Numbered chapters, each opening with an action title; exhibits carry numbers and sources. */
+:root{
+  --bg:#F5F6F2; --surface:#FFFFFF; --ink:#15211B; --muted:#5C6A62; --line:#DAE0D9;
+  --accent:#1E5A47; --accent-soft:#E2EDE7; --sea:#245F78; --sea-soft:#E0ECF1;
+  --flag:#A23F28; --flag-soft:#F7E5DF; --warn:#8A5B00; --warn-soft:#F6EDD5; --ok:#2B6B45; --ok-soft:#E1F0E6;
+  --chart-mute:#B9C3BC; --hatch:#E8EEE9;
+  --f-display:"Source Serif 4","Noto Sans Georgian",Georgia,serif;
+  --f-body:"IBM Plex Sans","Noto Sans Georgian",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0E1411; --surface:#161E1A; --ink:#E6EDE8; --muted:#9DAAA2; --line:#29342D;
+  --accent:#8CC5A8; --accent-soft:#1D2C25; --sea:#7DB9D0; --sea-soft:#172830;
+  --flag:#EC977A; --flag-soft:#33201A; --warn:#E0BC66; --warn-soft:#2F2716; --ok:#86CDA0; --ok-soft:#1A2C21;
+  --chart-mute:#4A5750; --hatch:#1A2520; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E1411; --surface:#161E1A; --ink:#E6EDE8; --muted:#9DAAA2; --line:#29342D;
+  --accent:#8CC5A8; --accent-soft:#1D2C25; --sea:#7DB9D0; --sea-soft:#172830;
+  --flag:#EC977A; --flag-soft:#33201A; --warn:#E0BC66; --warn-soft:#2F2716; --ok:#86CDA0; --ok-soft:#1A2C21;
+  --chart-mute:#4A5750; --hatch:#1A2520; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+a{color:var(--sea);text-underline-offset:2px}
+a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--sea);outline-offset:2px;border-radius:4px}
+.wrap{max-width:64rem;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+p{margin:0}
+h1,h2,h3{margin:0;text-wrap:balance}
+.read{max-width:44rem}
+
+/* chapter rail */
+.rail{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.rail .wrap{display:flex;gap:.25rem;overflow-x:auto;padding-block:.55rem;scrollbar-width:none}
+.rail .wrap::-webkit-scrollbar{display:none}
+.rail a{flex:none;font-size:.8rem;color:var(--muted);text-decoration:none;padding:.3rem .6rem;border-radius:6px;white-space:nowrap}
+.rail a b{font-family:var(--f-mono);font-weight:500;color:var(--accent);margin-right:.3rem}
+.rail a:hover{background:var(--surface);color:var(--ink)}
+
+/* cover */
+.cover{padding-block:2.75rem 1.5rem}
+.kicker{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+h1{font-family:var(--f-display);font-weight:700;font-size:clamp(2.2rem,6.5vw,3.4rem);line-height:1.05;letter-spacing:-.01em;margin-top:.6rem}
+.cover .dek{font-size:1.12rem;color:var(--muted);margin-top:.9rem;max-width:44rem}
+.meta{display:flex;flex-wrap:wrap;gap:.35rem 1.4rem;margin-top:1.2rem;font-size:.85rem;color:var(--muted)}
+.meta b{color:var(--ink);font-weight:600}
+
+/* chapters */
+section.ch{padding-block:2.75rem;border-top:1px solid var(--line)}
+section[id]{scroll-margin-top:3.4rem}
+.ch-head{display:grid;gap:.55rem;margin-bottom:1.6rem}
+.ch-num{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+h2{font-family:var(--f-display);font-weight:600;font-size:clamp(1.55rem,4.2vw,2.15rem);line-height:1.18}
+.sowhat{max-width:46rem;color:var(--muted);font-size:1rem}
+.sowhat b{color:var(--ink);font-weight:600}
+h3{font-family:var(--f-body);font-weight:600;font-size:1.05rem;line-height:1.35}
+.stack{display:grid;gap:1.75rem}
+
+/* exhibits */
+figure.ex{margin:0;display:grid;gap:.75rem;min-width:0}
+figure.ex>figcaption{display:grid;gap:.15rem}
+.exn{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.ext{font-family:var(--f-display);font-weight:600;font-size:1.15rem;line-height:1.3}
+.src{font-size:.78rem;color:var(--muted)}
+.src::before{content:"Source: ";font-weight:600}
+.note-s{font-size:.78rem;color:var(--muted)}
+
+/* summary */
+.scr{display:grid;gap:.6rem;border-left:3px solid var(--accent);padding-left:1rem;max-width:48rem}
+.scr p{font-size:1.02rem}
+.scr b{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:.1rem}
+.twocol{display:grid;grid-template-columns:repeat(auto-fit,minmax(18rem,1fr));gap:1rem}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:1.1rem 1.15rem;min-width:0}
+.panel h3{margin-bottom:.6rem}
+ol.num{margin:0;padding-left:1.25rem;display:grid;gap:.55rem}
+ol.num li::marker{font-family:var(--f-mono);font-size:.8rem;color:var(--accent)}
+ul.dot{margin:0;padding-left:1.1rem;display:grid;gap:.45rem}
+ul.dot li::marker{color:var(--accent)}
+li b{font-weight:600}
+
+/* tables */
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.9rem;min-width:38rem}
+th,td{text-align:left;padding:.6rem .75rem;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:500;background:var(--bg)}
+tr:last-child td{border-bottom:0}
+td.num,th.num{font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
+tr.hl td{background:var(--accent-soft)}
+
+/* verdict tags */
+.tag{display:inline-block;font-size:.72rem;font-weight:600;padding:.08rem .45rem;border-radius:4px;white-space:nowrap;line-height:1.5}
+.t-ok{background:var(--ok-soft);color:var(--ok)}
+.t-warn{background:var(--warn-soft);color:var(--warn)}
+.t-flag{background:var(--flag-soft);color:var(--flag)}
+.t-sea{background:var(--sea-soft);color:var(--sea)}
+.t-mute{border:1px solid var(--line);color:var(--muted)}
+
+/* kpi strip */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(10rem,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.kpi{background:var(--surface);padding:.9rem 1rem;display:grid;gap:.15rem;align-content:start}
+.kpi .v{font-family:var(--f-display);font-weight:700;font-size:1.7rem;font-variant-numeric:tabular-nums;line-height:1.1}
+.kpi .l{font-size:.8rem;color:var(--muted);line-height:1.4}
+
+/* bars */
+.bars{display:grid;gap:.4rem;max-width:44rem}
+.bar-row{display:grid;grid-template-columns:minmax(7rem,13rem) minmax(0,1fr);gap:.75rem;align-items:center;font-size:.9rem}
+.bar-cell{display:flex;align-items:center;gap:.5rem;min-width:0}
+.bar{display:block;flex:none;height:.85rem;width:calc(var(--w) / var(--max) * 78%);min-width:3px;background:var(--accent);border-radius:0 4px 4px 0}
+.bar.mute{background:var(--chart-mute)}
+.bar.sea{background:var(--sea)}
+.bar-cell b{font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+.bar-cell small{color:var(--muted);font-size:.8rem}
+@media (max-width:34rem){.bar-row{grid-template-columns:minmax(0,1fr);gap:.1rem;margin-bottom:.35rem}.bar{width:calc(var(--w) / var(--max) * 62%)}}
+
+/* chart svg */
+.chart{width:100%;height:auto;display:block}
+.chart text{font-family:var(--f-body);fill:var(--muted);font-size:11px}
+.chart .lbl{fill:var(--ink);font-size:11.5px}
+.chart .lbl-hl{fill:var(--accent);font-size:12.5px;font-weight:600}
+.chart .grid{stroke:var(--line);stroke-width:1}
+.chart .axis{stroke:var(--muted);stroke-width:1}
+.chart .pt{fill:var(--chart-mute);stroke:var(--surface);stroke-width:2}
+.chart .pt-hl{fill:var(--accent);stroke:var(--surface);stroke-width:2}
+.chart .zone{fill:var(--accent-soft)}
+.chart .zone-t{fill:var(--accent);font-size:11px;font-weight:600}
+.chartbox{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:.75rem;overflow-x:auto}
+
+/* personas */
+.personas{display:grid;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));gap:.75rem}
+.pe{display:grid;gap:.55rem;align-content:start;padding:1rem 1.05rem;border:1px solid var(--line);border-radius:8px;background:var(--surface);min-width:0}
+.pe .who{display:flex;justify-content:space-between;gap:.5rem;align-items:baseline}
+.pe dl{display:grid;grid-template-columns:auto 1fr;gap:.25rem .7rem;margin:0;font-size:.88rem}
+.pe dt{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-top:.2rem}
+.pe dd{margin:0;min-width:0}
+.pe .hook{font-size:.88rem;padding:.55rem .7rem;border-radius:6px;background:var(--accent-soft)}
+
+/* TOWS */
+.tows{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem}
+@media (max-width:42rem){.tows{grid-template-columns:1fr}}
+.tw{padding:1rem 1.05rem;border:1px solid var(--line);border-radius:8px;background:var(--surface);min-width:0}
+.tw .q{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.tw h3{margin:.2rem 0 .5rem}
+.swot{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.75rem}
+@media (max-width:56rem){.swot{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:34rem){.swot{grid-template-columns:1fr}}
+.sw{padding:.95rem 1rem;border-radius:8px;border:1px solid var(--line);background:var(--surface);font-size:.9rem;min-width:0}
+.sw h3{font-family:var(--f-display);font-size:1.1rem;margin-bottom:.45rem}
+.sw.s h3{color:var(--ok)} .sw.w h3{color:var(--flag)} .sw.o h3{color:var(--sea)} .sw.t h3{color:var(--warn)}
+
+/* message house */
+.house{display:grid;gap:.6rem;max-width:52rem}
+.house .roof{background:var(--accent);color:var(--bg);border-radius:8px;padding:1rem 1.1rem;font-family:var(--f-display);font-size:1.08rem;line-height:1.4}
+.house .pillars{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.6rem}
+@media (max-width:60rem){.house .pillars{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:40rem){.house .pillars{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.pillar{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:.8rem .85rem;font-size:.88rem;min-width:0}
+.pillar h3{font-size:.98rem;margin-bottom:.3rem}
+.house .base{background:var(--hatch);border-radius:8px;padding:.75rem 1rem;font-size:.88rem;color:var(--muted)}
+.pillar .pk{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.pillar h3{font-family:var(--f-display);font-size:1.08rem;line-height:1.25;margin:.15rem 0 .5rem}
+.pillar dl{display:grid;gap:.15rem;margin:0}
+.pillar dt{font-family:var(--f-mono);font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:.35rem}
+.pillar dd{margin:0;font-size:.86rem;line-height:1.45}
+
+/* ads gallery */
+.controls{display:grid;gap:.6rem;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:.85rem}
+.crow{display:flex;flex-wrap:wrap;align-items:center;gap:.35rem}
+.crow .cl{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);min-width:5.2rem}
+.chip{font:inherit;font-size:.8rem;padding:.25rem .65rem;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip .c{color:var(--muted);margin-left:.25rem;font-variant-numeric:tabular-nums}
+.chip[aria-pressed="true"] .c{color:var(--bg);opacity:.75}
+.gsel{font:inherit;font-size:.82rem;padding:.25rem .5rem;border-radius:6px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+.count{font-size:.85rem;color:var(--muted)}
+.ggroup{display:grid;gap:.7rem}
+.ggroup h3{font-family:var(--f-display);font-size:1.1rem;display:flex;align-items:baseline;gap:.5rem}
+.ggroup h3 span{font-family:var(--f-mono);font-size:.75rem;color:var(--muted);font-weight:400}
+.agrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(11.5rem,1fr));gap:.7rem}
+.acard{display:grid;grid-template-rows:auto 1fr;border:1px solid var(--line);border-radius:8px;background:var(--surface);overflow:hidden;cursor:pointer;text-align:left;font:inherit;color:inherit;padding:0;min-width:0}
+.acard:hover{border-color:var(--accent)}
+.thumb{position:relative;aspect-ratio:4/5;background:var(--hatch);overflow:hidden}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.thumb .play{position:absolute;inset:auto auto .5rem .5rem;background:rgba(0,0,0,.62);color:#fff;font-size:.72rem;font-weight:600;padding:.2rem .5rem;border-radius:999px;display:flex;align-items:center;gap:.3rem}
+.thumb .lng{position:absolute;top:.5rem;left:.5rem;background:rgba(0,0,0,.62);color:#fff;font-family:var(--f-mono);font-size:.7rem;padding:.1rem .4rem;border-radius:4px}
+.thumb .warnb{position:absolute;top:.5rem;right:.5rem;background:var(--warn);color:var(--surface);font-size:.66rem;font-weight:600;padding:.1rem .4rem;border-radius:4px}
+.ainfo{display:grid;gap:.25rem;padding:.6rem .7rem .7rem;align-content:start;min-width:0}
+.ainfo .st{font-size:.72rem;color:var(--accent);font-weight:600}
+.ainfo .hd{font-size:.86rem;font-weight:600;line-height:1.3;overflow-wrap:anywhere}
+.ainfo .mt{font-size:.74rem;color:var(--muted)}
+
+/* lightbox */
+dialog.lb{border:0;padding:0;background:var(--surface);color:var(--ink);border-radius:10px;width:min(64rem,calc(100vw - 24px));max-height:calc(100dvh - 24px);overflow:auto}
+dialog.lb::backdrop{background:rgba(5,10,8,.72)}
+.lbin{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:0}
+@media (max-width:46rem){.lbin{grid-template-columns:1fr}}
+.lbmedia{background:#0b0f0d;display:flex;align-items:center;justify-content:center;min-height:16rem}
+.lbmedia img,.lbmedia video{max-width:100%;max-height:80dvh;display:block}
+.lbtext{padding:1rem 1.1rem 1.2rem;display:grid;gap:.75rem;align-content:start;min-width:0}
+.lbtop{display:flex;justify-content:space-between;align-items:center;gap:.5rem}
+.xbtn{font:inherit;font-size:.85rem;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:6px;padding:.3rem .7rem;cursor:pointer}
+.navb{font:inherit;font-size:.85rem;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:6px;padding:.3rem .6rem;cursor:pointer}
+.body{white-space:pre-wrap;font-size:.92rem;line-height:1.55;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:.7rem .8rem;overflow-wrap:anywhere}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:.3rem .8rem;font-size:.86rem;margin:0}
+.kv dt{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-top:.15rem}
+.kv dd{margin:0;min-width:0;overflow-wrap:anywhere}
+
+/* scorecard */
+.dots{letter-spacing:.12em;color:var(--accent);white-space:nowrap}
+.dots i{font-style:normal;color:var(--line)}
+
+/* deck */
+.deck td:first-child{white-space:nowrap;font-family:var(--f-mono);font-size:.78rem;color:var(--muted)}
+
+/* calculator */
+.calc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1rem}
+@media (max-width:46rem){.calc{grid-template-columns:1fr}}
+.inputs{display:grid;gap:.75rem}
+.inp{display:grid;gap:.25rem}
+.inp label{font-size:.85rem;display:flex;justify-content:space-between;gap:.5rem}
+.inp label output{font-family:var(--f-mono);font-variant-numeric:tabular-nums;color:var(--accent);font-weight:500}
+.inp input[type=range]{width:100%;accent-color:var(--accent)}
+.outs{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden;align-content:start}
+.out{background:var(--surface);padding:.7rem .9rem;display:flex;justify-content:space-between;gap:.75rem;align-items:baseline}
+.out span{font-size:.88rem;color:var(--muted)}
+.out b{font-family:var(--f-display);font-size:1.25rem;font-variant-numeric:tabular-nums}
+.out.main{background:var(--accent-soft)}
+
+/* georgian ads */
+.tbc{background:var(--warn-soft);color:var(--warn);border-radius:4px;padding:0 .25rem;font-weight:600;font-size:.92em}
+.kads{display:grid;grid-template-columns:repeat(auto-fit,minmax(19rem,1fr));gap:.75rem}
+.ka{display:grid;gap:.65rem;align-content:start;padding:1rem 1.05rem;border:1px solid var(--line);border-radius:8px;background:var(--surface);min-width:0}
+.ka .kh{display:flex;justify-content:space-between;align-items:baseline;gap:.5rem}
+.fld{display:grid;gap:.25rem}
+.fld .fl{display:flex;justify-content:space-between;align-items:center;font-family:var(--f-mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.fld .fv{white-space:pre-wrap;font-size:.94rem;line-height:1.6;padding:.6rem .7rem;border-radius:6px;background:var(--bg);border:1px solid var(--line);overflow-wrap:anywhere}
+.fld .fv.short{font-weight:600}
+.copy{font:inherit;font-size:.72rem;padding:.12rem .55rem;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;text-transform:none;letter-spacing:0;font-family:var(--f-body)}
+.copy[data-done]{background:var(--ok-soft);color:var(--ok);border-color:transparent}
+.brief{font-size:.86rem;color:var(--muted)}
+.brief b{color:var(--ink);font-weight:600}
+.kf{display:grid;gap:.5rem}
+.kf-row{display:grid;grid-template-columns:5.5rem minmax(0,1fr);gap:.75rem;font-size:.93rem}
+.kf-row>div{min-width:0;overflow-wrap:anywhere}
+.kf-l{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-top:.15rem}
+.kf-v .opt{color:var(--muted);font-size:.88rem}
+
+.fixgrp{display:grid;gap:.6rem}
+.fixgrp h3{font-family:var(--f-display);font-size:1.12rem;display:flex;align-items:baseline;gap:.5rem;flex-wrap:wrap}
+.fixgrp h3 span{font-family:var(--f-body);font-size:.8rem;font-weight:400;color:var(--muted)}
+.fix td{font-size:.87rem}
+.fix td:first-child{font-family:var(--f-mono);color:var(--muted);white-space:nowrap}
+.fix td:nth-child(2){font-weight:600}
+.fixtop{display:flex;justify-content:space-between;align-items:center;gap:.75rem;flex-wrap:wrap}
+[hidden]{display:none!important}
+/* platform tabs + placement mockups */
+.ptabs{display:flex;gap:.25rem;border-bottom:1px solid var(--line);overflow-x:auto}
+.ptab{font:inherit;font-size:.92rem;font-weight:600;background:none;border:0;border-bottom:2px solid transparent;padding:.55rem .8rem;color:var(--muted);cursor:pointer;margin-bottom:-1px;white-space:nowrap}
+.ptab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+.ptab small{font-weight:400;color:var(--muted);margin-left:.35rem}
+.chip.vchip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.mkgrid{grid-template-columns:repeat(auto-fill,minmax(17.5rem,1fr));gap:1.4rem 1rem;align-items:start}
+.mkcell{display:grid;gap:.45rem;justify-items:center;min-width:0}
+.mk-label{display:flex;justify-content:space-between;align-items:center;gap:.5rem;width:100%;max-width:21rem;font-size:.75rem;color:var(--muted)}
+.mk-label>span:first-child{font-family:var(--f-mono);letter-spacing:.05em;text-transform:uppercase;font-size:.68rem}
+.mk{--mk-ink:#050505;--mk-mut:#65676B;--mk-line:#E4E6EB;width:100%;max-width:21rem;background:#fff;color:var(--mk-ink);border-radius:14px;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.12),0 8px 24px rgba(0,0,0,.08);border:1px solid rgba(0,0,0,.08);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Noto Sans Georgian",sans-serif;font-size:14px;line-height:1.35;position:relative;text-align:left}
+.mk-hd{display:flex;align-items:center;gap:.5rem;padding:.6rem .7rem}
+.mk-av{width:36px;height:36px;border-radius:50%;background:#1D2B36;color:#E9C46A;display:grid;place-items:center;font-weight:700;font-size:15px;flex:none;font-family:Georgia,serif}
+.mk-av.ring{box-shadow:0 0 0 2px #fff,0 0 0 4px #E1306C}
+.mk-av.sm{width:28px;height:28px;font-size:12px}
+.mk-id{display:grid;min-width:0;flex:1}
+.mk-id b{font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mk-id small{font-size:12px;color:var(--mk-mut)}
+.mk-dots{color:var(--mk-mut);font-weight:700;letter-spacing:1px}
+.mk-txt{padding:0 .75rem;white-space:pre-line;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden;overflow-wrap:anywhere}
+.mk-txt.ig{-webkit-line-clamp:2;padding-top:.2rem}
+.mk.open .mk-txt{-webkit-line-clamp:unset;display:block}
+.mk-more{font:inherit;font-size:13px;color:var(--mk-mut);background:none;border:0;padding:.15rem .75rem .55rem;cursor:pointer;font-weight:600;text-align:left;display:block}
+.mk.open .mk-more{display:none}
+.mk-media{position:relative;width:100%;background:#000;overflow:hidden;cursor:pointer}
+.mk-media img,.mk-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.mk-media.contain img,.mk-media.contain video{object-fit:contain;z-index:1}
+.mk-media.contain::before{content:"";position:absolute;inset:-24px;background:var(--bgimg) center/cover;filter:blur(20px) brightness(.6)}
+.mk-play{position:absolute;z-index:2;left:50%;top:50%;transform:translate(-50%,-50%);width:54px;height:54px;border-radius:50%;background:rgba(0,0,0,.55);color:#fff;display:grid;place-items:center;font-size:20px;padding-left:4px;pointer-events:none}
+.mk-link{display:flex;align-items:center;gap:.6rem;background:#F0F2F5;padding:.6rem .75rem}
+.mk-lt{display:grid;flex:1;min-width:0}
+.mk-lt small{font-size:11.5px;color:var(--mk-mut);text-transform:uppercase}
+.mk-lt b{font-size:14.5px;font-weight:600;overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow-wrap:anywhere}
+.mk-btn{flex:none;background:#E2E5E9;color:#050505;font-weight:600;font-size:13px;padding:.45rem .7rem;border-radius:6px;white-space:nowrap}
+.mk-acts{display:flex;justify-content:space-around;border-top:1px solid var(--mk-line);margin:0 .6rem;padding:.5rem 0;color:var(--mk-mut);font-weight:600;font-size:13px}
+.mk-igcta{display:flex;justify-content:space-between;align-items:center;padding:.6rem .75rem;background:#3797F0;color:#fff;font-weight:600;font-size:13.5px}
+.mk-igacts{display:flex;gap:.85rem;padding:.6rem .75rem .2rem;color:#050505}
+.mk-igacts svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linejoin:round;stroke-linecap:round}
+.mk-st,.mk-yt{background:#000;color:#fff;border-radius:18px;border-color:#222}
+.mk-st-top{position:absolute;inset:0 0 auto;z-index:3;padding:.5rem .6rem 1.5rem;background:linear-gradient(rgba(0,0,0,.5),transparent);pointer-events:none}
+.mk-bar{display:block;height:2px;background:rgba(255,255,255,.6);border-radius:2px;margin-bottom:.45rem}
+.mk-st-top .mk-hd{padding:0;gap:.4rem;font-size:13px}
+.mk-st-top small{opacity:.85;font-size:12px}
+.mk-st-bot{position:absolute;inset:auto 0 0;z-index:3;padding:2.5rem .75rem .85rem;background:linear-gradient(transparent,rgba(0,0,0,.7));display:grid;gap:.6rem;justify-items:center;pointer-events:none}
+.mk-st-cap{font-size:13px;white-space:pre-line;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;justify-self:stretch;text-shadow:0 1px 2px rgba(0,0,0,.6);overflow-wrap:anywhere}
+.mk-st-cta{background:#fff;color:#050505;font-weight:600;font-size:13.5px;padding:.5rem 1rem;border-radius:999px}
+.mk-yt-rail{position:absolute;right:.55rem;bottom:8.5rem;z-index:3;display:grid;gap:1rem;pointer-events:none}
+.mk-yt-rail i{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.2)}
+.mk-yt-bot{position:absolute;inset:auto 0 0;z-index:3;padding:2.5rem .75rem .85rem;background:linear-gradient(transparent,rgba(0,0,0,.8));display:grid;gap:.35rem;pointer-events:none}
+.mk-yt-id{display:flex;align-items:center;gap:.4rem;font-size:13.5px}
+.mk-yt-h{font-size:14px;font-weight:600;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+.mk-yt-sp{font-size:12px;opacity:.9}
+.mk-sp{font-weight:700}
+.mk-yt-cta{margin-top:.35rem;background:#3EA6FF;color:#0F0F0F;font-weight:600;text-align:center;padding:.55rem;border-radius:999px;font-size:14px}
+.mk-ytf-row{display:flex;gap:.6rem;padding:.65rem .75rem .3rem}
+.mk-ytf-h{font-weight:600;font-size:14.5px;line-height:1.3;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+.mk-yt-sp.dark{color:var(--mk-mut);opacity:1}
+.mk-ytf-cta{display:block;margin:.3rem .75rem .75rem;background:#065FD4;color:#fff;text-align:center;font-weight:600;padding:.5rem;border-radius:999px;font-size:14px}
+.mk-det{font:inherit;font-size:.8rem;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:.2rem .75rem;cursor:pointer}
+.ggrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(17.5rem,1fr));gap:1.4rem 1rem;align-items:start}
+.gcell{display:grid;gap:.5rem;justify-items:center;min-width:0}
+.gcell .gkv,.gcell>a{width:100%;max-width:21rem}
+.gcell>a{font-size:.82rem}
+.mk-gbar{background:#fff;padding:.55rem .7rem;border-bottom:1px solid #ECEDEF}
+.mk-gbar span{display:block;height:30px;border-radius:999px;background:#F1F3F4}
+.mk-gbody{background:#fff;padding:.25rem 0}
+.mk-gbody img{display:block;width:100%;height:auto}
+.gtext{padding:.75rem 1rem;font-family:Arial,sans-serif;display:grid;gap:.3rem}
+.gtext small{font-weight:700;font-size:12px}
+.gurl{display:grid;font-size:13px}.gurl span{color:#4D5156;font-size:12px}
+.gh{color:#1A0DAB;font-size:18px;line-height:1.3}
+.gd{color:#4D5156;font-size:14px}
+.gkv{font-size:.8rem}
+.srcs{font-size:.84rem;color:var(--muted);display:grid;gap:.3rem;padding-left:1.1rem;margin:0}
+.srcs a{word-break:break-word}
+footer{padding-block:2rem 3rem;color:var(--muted);font-size:.8rem;border-top:1px solid var(--line)}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style>
+
+
+<nav class="rail" aria-label="Chapters"><div class="wrap">
+  <a href="#project"><b>01</b>Project</a><a href="#market"><b>02</b>Market &amp; buyers</a><a href="#competition"><b>03</b>Competition</a><a href="#messaging"><b>04</b>Messaging</a><a href="#ads"><b>05</b>Current ads</a><a href="#banners"><b>06</b>Creative directions</a><a href="#launch"><b>07</b>Access</a>
+</div></nav>
+
+<header class="cover wrap" id="summary">
+  <div class="kicker">Flow Agency · internal brief · 28 October 2026</div>
+  <h1>Guru Subtropical: what we're selling and how</h1>
+  <p class="dek">The short version for the Flow team: the project, the buyer, the message, the plan and the first creative.</p>
+  <div class="meta"><span>Author: <b>Gia Ananidze</b></span><span>Client: <b>Guru Holding</b></span><span>Project: <b>Guru Subtropical</b>, Kvariati, Gonio</span></div>
+  <p class="note-s" style="margin-top:.8rem;max-width:44rem"><b>Scope:</b> our project is <b>Guru Subtropical</b> (new, pre-sale). <b>Guru Status</b> is Guru's previous project (finished, about 90% sold) and appears only as reference.</p>
+</header>
+
+<section class="ch" id="project"><div class="wrap stack">
+  <div class="ch-head"><div class="ch-num">01 · The project</div><h2>Guru Subtropical in seven lines</h2></div>
+  <div class="tbl"><table style="min-width:32rem">
+    <tbody>
+      <tr><td><b>Location</b></td><td>Kvariati, Gonio; on a green hill, ~300 m to the sea, beach shuttle, ~15 min to Batumi</td></tr>
+      <tr><td><b>Format</b></td><td>Low-rise blocks (6–9 floors) plus townhouses and villas, about 180 units</td></tr>
+      <tr><td><b>Units</b></td><td>Studios, apartments, penthouses, townhouses, villas</td></tr>
+      <tr><td><b>Price</b></td><td>From ~$105k; villas to ~$520k; $2,500–3,100/m² <span class="note-s">(source: Korter.ge listing, October 2026)</span></td></tr>
+      <tr><td><b>Terms</b></td><td>20% down, 48 months interest-free (website; confirm)</td></tr>
+      <tr><td><b>Handover</b></td><td>Q4 2028</td></tr>
+      <tr><td><b>Developer proof</b></td><td>Start Up (2016), Residence (2018), Status (2025) delivered in Batumi</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note-s">Prices, down payment and unit count differ across listings (Korter, Realting, brokers). We work from one fact sheet confirmed by Guru.</p>
+</div></section>
+
+<section class="ch" id="market"><div class="wrap stack">
+  <div class="ch-head"><div class="ch-num">02 · Market &amp; buyers</div><h2>A cooling market where buyers compare, so trust and lifestyle win</h2></div>
+  <div class="kpis">
+    <div class="kpi"><div class="v">17,478</div><div class="l">Batumi sales in 2025, +15% (G&amp;T)</div></div>
+    <div class="kpi"><div class="v">$2,048</div><div class="l">Gonio–Kvariati average per m²</div></div>
+    <div class="kpi"><div class="v">12,400</div><div class="l">unsold new units, end-2025, +14%</div></div>
+    <div class="kpi"><div class="v">−11.8%</div><div class="l">July 2026 sales vs last year (Colliers)</div></div>
+  </div>
+  <figure class="ex">
+      <figcaption><span class="ext">Who buys in Batumi: share of developer sales, 2025</span></figcaption>
+      <div class="bars">
+        <div class="bar-row"><span>Georgia</span><span class="bar-cell"><span class="bar" style="--w:48;--max:50"></span><b>48%</b><small>Q1 2026: 37%</small></span></div>
+        <div class="bar-row"><span>Israel</span><span class="bar-cell"><span class="bar" style="--w:13;--max:50"></span><b>13%</b><small>10%</small></span></div>
+        <div class="bar-row"><span>Europe</span><span class="bar-cell"><span class="bar" style="--w:13;--max:50"></span><b>13%</b><small>18%</small></span></div>
+        <div class="bar-row"><span>Ukraine, Russia, Belarus</span><span class="bar-cell"><span class="bar" style="--w:11;--max:50"></span><b>11%</b><small>16%</small></span></div>
+        <div class="bar-row"><span>Turkey</span><span class="bar-cell"><span class="bar" style="--w:3;--max:50"></span><b>3%</b><small>4%</small></span></div>
+        <div class="bar-row"><span>Central Asia</span><span class="bar-cell"><span class="bar" style="--w:3;--max:50"></span><b>3%</b><small>n/a</small></span></div>
+        <div class="bar-row"><span>Arab countries</span><span class="bar-cell"><span class="bar" style="--w:3;--max:50"></span><b>~3%</b><small>3%</small></span></div>
+      </div>
+      <p class="src">Galt &amp; Taggart developer survey 2025 and Q1 2026 (via GBC, HomesOverseas). Shares vary ±3 points between outlets. Colliers registry data: foreigners 45% in H1 2026.</p>
+    </figure>
+  <div class="personas">
+    <article class="pe"><div class="who"><h3>1. Georgians in Georgia</h3><span class="tag t-ok">Core</span></div><dl><dt>Wants</dt><dd>A trusted developer, installments, a summer home by the sea that also earns</dd><dt>Reach</dt><dd>Facebook and Instagram in Georgian; Tbilisi, Batumi, Kutaisi</dd></dl><div class="hook"><b>Hook:</b> peace in Gonio nature, built by the team behind Status.</div></article>
+    <article class="pe"><div class="who"><h3>2. Georgians abroad</h3><span class="tag t-ok">Core</span></div><dl><dt>Wants</dt><dd>A home to come back to every summer; buying remotely with installments</dd><dt>Reach</dt><dd>Meta in Georgian in the US, Greece, Italy, Spain, Germany</dd></dl><div class="hook"><b>Hook:</b> your coastal escape at home, bought from wherever you live.</div></article>
+    <article class="pe"><div class="who"><h3>3. Israeli investors</h3><span class="tag t-ok">Core</span></div><dl><dt>Wants</dt><dd>Early entry, track record, honest rental numbers</dd><dt>Reach</dt><dd>Meta in Hebrew, WhatsApp</dd></dl><div class="hook"><b>Hook:</b> a developer who delivers, at pre-sale terms.</div></article>
+    <article class="pe"><div class="who"><h3>4. Russian-speaking hybrid buyers</h3><span class="tag t-ok">Core</span></div><dl><dt>Wants</dt><dd>Quiet, nature, a place to live part of the year; residency</dd><dt>Reach</dt><dd>Meta in Russian, Telegram, YouTube reviewers</dd></dl><div class="hook"><b>Hook:</b> low-rise Gonio living away from the towers.</div></article>
+    <article class="pe"><div class="who"><h3>5. European buyers</h3><span class="tag t-sea">Test</span></div><dl><dt>Wants</dt><dd>A sea home at a fraction of home-market prices</dd><dt>Reach</dt><dd>Meta in English; countries to be decided</dd></dl><div class="hook"><b>Hook:</b> coastal escape, 15 minutes from Batumi.</div></article>
+  </div>
+</div></section>
+
+<section class="ch" id="competition"><div class="wrap stack">
+  <div class="ch-head"><div class="ch-num">03 · Competition <span class="tag t-warn" style="margin-left:.5rem;letter-spacing:0;text-transform:none;font-family:var(--f-body)">This section is generated by AI</span></div><h2>Gonio is filling with tall towers; low-rise at a premium price is almost empty</h2><p class="sowhat">This whole section was generated by AI from public listings and has not been verified by Flow. Treat prices, heights and positions as indicative.</p></div>
+  <figure class="ex">
+    <figcaption><span class="ext">Positioning map: building height vs price per m²</span></figcaption>
+    <div class="chartbox">
+      <svg class="chart" viewBox="0 0 640 380" role="img" aria-label="Scatter chart of competitor building height against price per square metre. Guru Subtropical sits in the low-rise, mid-premium zone with only Aurum Fort nearby.">
+        <rect class="zone" x="60" y="120" width="183.3" height="90" rx="4"/>
+        <text class="zone-t" x="64" y="134">Low-rise,</text><text class="zone-t" x="64" y="147">mid-premium</text>
+        <g>
+          <line class="grid" x1="60" x2="610" y1="30" y2="30"/><line class="grid" x1="60" x2="610" y1="90" y2="90"/><line class="grid" x1="60" x2="610" y1="150" y2="150"/><line class="grid" x1="60" x2="610" y1="210" y2="210"/><line class="grid" x1="60" x2="610" y1="270" y2="270"/>
+          <line class="axis" x1="60" x2="610" y1="330" y2="330"/>
+          <text x="52" y="334" text-anchor="end">$0</text><text x="52" y="274" text-anchor="end">$1,000</text><text x="52" y="214" text-anchor="end">$2,000</text><text x="52" y="154" text-anchor="end">$3,000</text><text x="52" y="94" text-anchor="end">$4,000</text><text x="52" y="34" text-anchor="end">$5,000</text>
+          <text x="60.0" y="348" text-anchor="middle">0</text><text x="151.7" y="348" text-anchor="middle">5</text><text x="243.3" y="348" text-anchor="middle">10</text><text x="335.0" y="348" text-anchor="middle">15</text><text x="426.7" y="348" text-anchor="middle">20</text><text x="518.3" y="348" text-anchor="middle">25</text><text x="610.0" y="348" text-anchor="middle">30</text>
+          <text x="335" y="370" text-anchor="middle">Maximum floors</text>
+          <text x="4" y="14">Price per m² (USD)</text>
+        </g>
+        <g>
+          <circle class="pt" cx="353.3" cy="228" r="6"><title>Next Gardens: 16 floors, $1,700/m²</title></circle><text class="lbl" x="362.3" y="232">Next Gardens</text>
+          <circle class="pt" cx="518.3" cy="110.4" r="6"><title>Wyndham Residence: 25 floors, $3,660/m²</title></circle><text class="lbl" x="508.3" y="114" text-anchor="end">Wyndham Residence</text>
+          <circle class="pt" cx="536.7" cy="62.7" r="6"><title>Radisson Residences: 26 floors, $4,080–4,830/m²</title></circle><text class="lbl" x="526.7" y="67" text-anchor="end">Radisson Residences</text>
+          <circle class="pt" cx="353.3" cy="180" r="6"><title>Montemar: 16 floors, $2,500/m²</title></circle><text class="lbl" x="362.3" y="184">Montemar</text>
+          <circle class="pt" cx="280.0" cy="150" r="6"><title>Green Side Gonio: 12 floors, $3,000/m²</title></circle><text class="lbl" x="289.0" y="146">Green Side Gonio</text>
+          <circle class="pt" cx="188.3" cy="120" r="6"><title>Aurum Fort: 7 floors, $3,500/m²</title></circle><text class="lbl" x="197.3" y="114">Aurum Fort</text>
+          <circle class="pt" cx="115.0" cy="276" r="6"><title>Seashell Cottages: low-rise, $900/m²</title></circle><text class="lbl" x="124.0" y="280">Seashell Cottages</text>
+          <circle class="pt-hl" cx="206.7" cy="162" r="7.5"><title>Guru Subtropical: up to 8–9 floors, $2,500–3,100/m²</title></circle>
+          <line class="axis" x1="207.7" y1="170" x2="211.7" y2="190" style="stroke:var(--accent)"/><text class="lbl-hl" x="211.7" y="202">Guru Subtropical</text>
+        </g>
+      </svg>
+    </div>
+    <p class="note-s">Midpoint prices where ranges are given. Wyndham Grand Gonio Riviera townhouses (~€6,145/m², 3 floors) sit above the chart.</p>
+    <p class="src">Korter, geoln, neginski, Realting, European Village; October 2026.</p>
+  </figure>
+  <div class="twocol">
+    <div class="panel"><h3>Where Subtropical wins</h3><ul class="dot">
+      <li><b>Low-rise among towers.</b> Only Aurum Fort and Seashell are comparable in height.</li>
+      <li><b>Villas and townhouses at ~$2.5k/m²</b>, against €6k+ for the only branded townhouses nearby.</li>
+      <li><b>48 months interest-free</b> versus ~14 months at Next Group and 30 at Green Side.</li>
+      <li><b>A home, not a hotel room.</b> Almost every rival sells hotel units to investors.</li>
+    </ul></div>
+    <div class="panel"><h3>Where it loses</h3><ul class="dot">
+      <li><b>Sea distance.</b> Rivals sell 20–50 m and private beaches.</li>
+      <li><b>No hotel brand</b> to reassure first-time foreign buyers.</li>
+      <li><b>Price</b> above unbranded towers like Next Gardens and Montemar.</li>
+    </ul></div>
+  </div>
+</div></section>
+
+<section class="ch" id="messaging"><div class="wrap stack">
+  <div class="ch-head"><div class="ch-num">04 · Messaging</div><h2>Lead with a feeling or a solved problem; use facts only as proof</h2></div>
+  <figure class="ex">
+    <figcaption><span class="ext">Message house: sell the life it gives, use the facts as proof</span></figcaption>
+    <div class="house" style="max-width:none">
+      <div class="roof">A coastal escape in Gonio's green hills: peace in nature, weekends that feel like holidays, and a home built by a team that has already delivered three buildings.</div>
+      <div class="pillars">
+        <div class="pillar"><span class="pk">Nature</span><h3>Peace in Gonio nature</h3><dl><dt>Feels like</dt><dd>Morning coffee with the sea in front and green hills behind. The loudest sound is the waves.</dd><dt>Solves</dt><dd>Crowded towers, traffic and noise in central Batumi.</dd><dt>Proof</dt><dd>Low-rise blocks among greenery on a Kvariati hill.</dd></dl></div>
+        <div class="pillar"><span class="pk">Sea</span><h3>Your coastal escape</h3><dl><dt>Feels like</dt><dd>Clear water a few minutes away; an escape you can reach any weekend.</dd><dt>Solves</dt><dd>Holidays that need planning, booking and crowds.</dd><dt>Proof</dt><dd>~300 m to the sea, beach shuttle, 15 minutes to Batumi.</dd></dl></div>
+        <div class="pillar"><span class="pk">Lifestyle</span><h3>Weekends that feel like holidays</h3><dl><dt>Feels like</dt><dd>Pool, tennis and long lunches without leaving home.</dd><dt>Solves</dt><dd>Weekends lost to traffic and planning.</dd><dt>Proof</dt><dd>Pool, sports courts, fitness and playgrounds on site.</dd></dl></div>
+        <div class="pillar"><span class="pk">Trust</span><h3>Built by people who deliver</h3><dl><dt>Feels like</dt><dd>Buying with the calm of knowing the keys will come.</dd><dt>Solves</dt><dd>The fear that an off-plan project stalls.</dd><dt>Proof</dt><dd>Start Up, Residence and Status delivered in Batumi.</dd></dl></div>
+      </div>
+      <div class="base"><b>Rule:</b> lead every ad with a feeling or a solved problem, then one fact as proof. One approved fact sheet; no "guaranteed", no "0% tax", ROI only with a published model.</div>
+    </div>
+  </figure>
+</div></section>
+
+<section class="ch" id="ads"><div class="wrap stack">
+  <div class="ch-head"><div class="ch-num">05 · Current Guru ads</div><h2>Guru's current ads (all for Guru Status, the previous project)</h2></div>
+  <div class="ptabs" role="tablist" aria-label="Ad platform"><button type="button" class="ptab" role="tab" aria-selected="true" data-p="meta">Meta<small>24 live</small></button><button type="button" class="ptab" role="tab" aria-selected="false" data-p="google">Google<small>12 on record · 1 live</small></button></div>
+  <div id="p-meta" class="stack" style="gap:1.75rem">
+  <div class="controls" id="controls">
+    <div class="crow" id="viewrow"><span class="cl">View as</span></div>
+    <div class="crow"><span class="cl">Group by</span>
+      <select class="gsel" id="groupby" aria-label="Group ads by">
+        <option value="style">Style</option><option value="lang">Language</option><option value="fmt">Format</option><option value="cta">Button</option><option value="none">No grouping</option>
+      </select>
+      <span class="count" id="acount"></span>
+    </div>
+    <div class="crow" data-filter="lang"><span class="cl">Language</span></div>
+    <div class="crow" data-filter="fmt"><span class="cl">Format</span></div>
+    <div class="crow" data-filter="style"><span class="cl">Style</span></div>
+    <div class="crow" data-filter="cta"><span class="cl">Button</span></div>
+  </div>
+  <div id="gallery" class="stack" style="gap:1.6rem"></div>
+  </div>
+  <div id="p-google" class="stack" style="gap:1.25rem" hidden>
+    <p class="note-s">Advertiser: Guru Construction LLC. 12 Google ads on record, 1 live.</p>
+    <div class="crow" id="gfilter"><span class="cl">Show</span></div>
+    <div class="ggrid" id="ggrid"></div>
+  </div>
+</div></section>
+
+<dialog class="lb" id="lb" aria-label="Ad details">
+  <div class="lbin">
+    <div class="lbmedia" id="lbmedia"></div>
+    <div class="lbtext">
+      <div class="lbtop"><span class="tag t-sea" id="lbstyle"></span><span style="display:flex;gap:.35rem"><button type="button" class="navb" id="lbprev" aria-label="Previous ad">←</button><button type="button" class="navb" id="lbnext" aria-label="Next ad">→</button><button type="button" class="xbtn" id="lbclose">Close</button></span></div>
+      <h3 id="lbhead"></h3>
+      <div class="body" id="lbbody"></div>
+      <dl class="kv" id="lbkv"></dl>
+      <a id="lblink" href="#" target="_blank" rel="noopener">Open in Meta Ad Library</a>
+    </div>
+  </div>
+</dialog>
+
+<section class="ch" id="banners"><div class="wrap stack">
+  <div class="ch-head"><div class="ch-num">06 · Creative directions by Gia Ananidze</div><h2>Gia's creative direction ideas: 16 feed banners that sell the life, not the floor plan</h2><p class="sowhat"><b>These are creative direction ideas created by Gia Ananidze</b> to show the look, tone and message for Subtropical; they are concepts for discussion, not final ads. 1080×1350 for Meta and Instagram feeds, in Guru's own fonts. Most banners sell a feeling or a solved problem; facts appear only as proof. Use <b>View as</b> to see each one in a feed with a suggested primary text. Files: <a href="https://drive.google.com/drive/folders/1FCz-Hrd8cC6sC2r7Tujd5keu3YPvWklF" target="_blank" rel="noopener">Google Drive folder</a>.</p></div>
+  <div class="controls" id="bcontrols"><div class="crow" id="bview"><span class="cl">View as</span></div><div class="crow" id="btheme"><span class="cl">Theme</span></div></div>
+  <div class="agrid mkgrid" id="bgrid"></div>
+  <div class="panel"><h3>Before launch</h3><ul class="dot">
+    <li><b>Images:</b> most banners use Guru's renders; banner 2 uses the Kvariati coast photo from guruholding.ge (confirm Guru owns it). Banners 6, 21, 23 and 25 use free Unsplash photos that were not shot in Gonio; swap in a Kvariati drone shoot when we have it.</li>
+    <li><b>Font:</b> Gilroy (Guru's website font) and Oswald. Confirm Guru's Gilroy licence covers ads, or ask for the files.</li>
+  </ul></div>
+</div></section>
+
+<section class="ch" id="launch"><div class="wrap stack">
+  <div class="ch-head"><div class="ch-num">07 · Access</div><h2>Access we need from Guru</h2></div>
+  <div class="panel"><ol class="num">
+      <li><b>Meta Business Manager:</b> Facebook page, Instagram @guru.holding, ad account(s), Pixel 1656160194893607, WhatsApp Business.</li>
+      <li><b>Google Ads:</b> both accounts (Guru Construction LLC).</li>
+      <li><b>Google Tag Manager:</b> GTM-MGH2X444.</li>
+      <li><b>Google Analytics 4:</b> G-9DC1J990TL, G-KB81HXK6R8, G-P0QMDBRPD1.</li>
+      <li><b>YouTube</b> channel (or we create one).</li>
+      <li><b>Google Business Profile</b> (or we create one).</li>
+      <li><b>Google Search Console.</b></li>
+      <li><b>Website (Tilda)</b> editor access.</li>
+      <li><b>CRM</b> access or a weekly lead export.</li>
+  </ol></div>
+</div></section>
+
+<footer><div class="wrap">Internal brief for Flow, 28 October 2026. Main sources: Meta Ad Library, Google Ads Transparency Center, guruholding.ge, Korter, Galt &amp; Taggart, Colliers, Geostat. Full research version available on request.</div></footer>
+
+<script>
+const ADS=[
+ {id:"2001868297152976",lang:"EN",fmt:"Image",style:"Lifestyle",cta:"DM",h:"(no headline)",b:"L",m:"img_lifestyle",d:"2026-10-27",mk:"Georgia",pl:"Instagram, Threads",lim:false},
+ {id:"1836248584059132",lang:"EN",fmt:"Image",style:"Lifestyle",cta:"DM",h:"(no headline)",b:"L",m:"img_lifestyle",d:"2026-10-27",mk:"Georgia, Turkey",pl:"Facebook, Instagram, Threads",lim:false},
+ {id:"4372724606204786",lang:"EN",fmt:"Image",style:"Price-led render",cta:"Lead form",h:"Looking for an investment? Batumi, Georgia",b:"EA",m:"img_en_render",d:"2026-10-05",mk:"Israel, Gulf, Europe",pl:"Facebook, Instagram, Audience Network",lim:false},
+ {id:"2139549193337553",lang:"EN",fmt:"Image",style:"Price-led render",cta:"Lead form",h:"Looking for an investment? Batumi, Georgia",b:"EA",m:"img_en_render",d:"2026-10-18",mk:"Not matched",pl:"Facebook, Instagram, Audience Network",lim:false},
+ {id:"1128326543338151",lang:"EN",fmt:"Image",style:"Floor plan",cta:"WhatsApp",h:"Chat with us",b:"EA",m:"img_en_plan",d:"2026-10-11",mk:"Israel, CIS, Gulf, Europe",pl:"Facebook, Instagram, Audience Network",lim:false},
+ {id:"1430411012611084",lang:"EN",fmt:"Video",style:"Spokesperson video",cta:"Lead form",h:"0% property tax | ROI up to 12% | Batumi, Georgia",b:"EB",m:"vid_en_spokes",d:"2026-09-29",mk:"Israel, Gulf, Europe",pl:"Facebook, Instagram, Audience Network",lim:false},
+ {id:"1479884604203475",lang:"EN",fmt:"Video",style:"Spokesperson video",cta:"Website",h:"Invest in Batumi | Now is the time",b:"EC",m:"vid_en_spokes",d:"2026-10-09",mk:"Israel, Gulf, Europe",pl:"Instagram",lim:true},
+ {id:"1800754171068000",lang:"EN",fmt:"Video",style:"Spokesperson video",cta:"WhatsApp",h:"Chat with us",b:"EA",m:"vid_en_spokes",d:"2026-10-11",mk:"Israel, CIS, Gulf, Europe",pl:"Facebook, Instagram, Audience Network",lim:true},
+ {id:"2625238581313079",lang:"EN",fmt:"Video",style:"Building walkthrough",cta:"Lead form",h:"0% property tax | ROI up to 12% | Batumi, Georgia",b:"EB",m:"vid_en_walk",d:"2026-10-15",mk:"Israel, Gulf, Europe",pl:"Facebook, Instagram, Audience Network",lim:false},
+ {id:"1423579592439817",lang:"EN",fmt:"Video",style:"Building walkthrough",cta:"WhatsApp",h:"Chat with us",b:"EA",m:"vid_clean_walk",d:"2026-10-11",mk:"Israel, CIS, Gulf, Europe",pl:"Facebook, Instagram, Audience Network",lim:true},
+ {id:"976730082153608",lang:"KA",fmt:"Image",style:"Price-led render",cta:"WhatsApp",h:"დასრულებული კომპლექსი ბათუმში",b:"K",m:"img_ka_day",d:"2026-10-15",mk:"Georgia",pl:"Facebook, Instagram, Audience Network, WhatsApp",lim:false},
+ {id:"1527547362518104",lang:"KA",fmt:"Image",style:"Price-led render",cta:"WhatsApp",h:"დასრულებული კომპლექსი ბათუმში",b:"K",m:"img_ka_day",d:"2026-10-15",mk:"US",pl:"Facebook, Instagram, Audience Network",lim:false},
+ {id:"1127912952965426",lang:"KA",fmt:"Image",style:"Price-led render",cta:"WhatsApp",h:"დასრულებული კომპლექსი ბათუმში",b:"K",m:"img_ka_night",d:"2026-10-15",mk:"Georgia",pl:"Facebook, Instagram, Audience Network, WhatsApp",lim:false},
+ {id:"1111871568014726",lang:"KA",fmt:"Image",style:"Price-led render",cta:"WhatsApp",h:"დასრულებული კომპლექსი ბათუმში",b:"K",m:"img_ka_night",d:"2026-10-15",mk:"US",pl:"Facebook, Instagram, Audience Network",lim:false},
+ {id:"4411000742456054",lang:"KA",fmt:"Image",style:"Price-led render",cta:"WhatsApp",h:"დეტალებისთვის მოგვწერეთ",b:"K",m:"img_ka_48k",d:"2026-10-05",mk:"US",pl:"Facebook, Instagram, Audience Network",lim:false},
+ {id:"2567886696985128",lang:"KA",fmt:"Video",style:"Building walkthrough",cta:"WhatsApp",h:"დასრულებული კომპლექსი ბათუმში",b:"K",m:"vid_ka_walk",d:"2026-10-12",mk:"Georgia",pl:"Facebook, Instagram, Audience Network, WhatsApp",lim:false},
+ {id:"1418812306384726",lang:"KA",fmt:"Video",style:"Building walkthrough",cta:"WhatsApp",h:"დეტალებისთვის მოგვწერეთ",b:"K",m:"vid_ka_walk",d:"2026-10-12",mk:"US",pl:"Facebook, Instagram, Audience Network",lim:false},
+ {id:"3042682389419415",lang:"RU",fmt:"Image",style:"Price-led render",cta:"Lead form",h:"0% налог на недвижимость | Батуми, Грузия",b:"RA",m:"img_ru_render",d:"2026-10-13",mk:"Israel, CIS, Gulf, Europe",pl:"Facebook, Instagram, Audience Network",lim:false},
+ {id:"1742366870203286",lang:"RU",fmt:"Image",style:"Floor plan",cta:"WhatsApp",h:"Ищете объект для инвестиций? Батуми",b:"RA",m:"img_ru_plan",d:"2026-10-11",mk:"Israel, CIS, Gulf, Europe",pl:"Facebook, Instagram, Audience Network",lim:false},
+ {id:"2124994041436072",lang:"RU",fmt:"Video",style:"Spokesperson video",cta:"Website",h:"Инвестиции в Батуми | Самое время",b:"RB",m:"vid_ru_spokes",d:"2026-10-11",mk:"Israel, CIS, other",pl:"Instagram",lim:false},
+ {id:"1141500471893827",lang:"RU",fmt:"Video",style:"Spokesperson video",cta:"WhatsApp",h:"Ищете объект для инвестиций? Батуми",b:"RA",m:"vid_ru_spokes",d:"2026-10-11",mk:"Israel, CIS, Gulf, Europe",pl:"Facebook, Instagram, Audience Network",lim:false},
+ {id:"1479450693998374",lang:"RU",fmt:"Video",style:"Spokesperson video",cta:"Lead form",h:"0% налог на недвижимость | Батуми, Грузия",b:"RA",m:"vid_ru_spokes",d:"2026-10-13",mk:"Israel, CIS, Gulf, Europe",pl:"Facebook, Instagram, Audience Network",lim:false},
+ {id:"973902025141522",lang:"RU",fmt:"Video",style:"Building walkthrough",cta:"Lead form",h:"0% налог на недвижимость | Батуми, Грузия",b:"RA",m:"vid_ru_walk",d:"2026-10-15",mk:"Israel, CIS, Gulf, Europe",pl:"Facebook, Instagram, Audience Network",lim:false},
+ {id:"1612485637042070",lang:"RU",fmt:"Video",style:"Building walkthrough",cta:"WhatsApp",h:"Ищете объект для инвестиций? Батуми",b:"RA",m:"vid_clean_walk",d:"2026-10-11",mk:"Israel, CIS, Gulf, Europe",pl:"Facebook, Instagram, Audience Network",lim:true}
+];
+const BODY={
+ L:"Your weekend doesn't need a plan. It needs a door that opens 150 metres from the water 🌊\n\nGuru Status is complete - 29 floors on the New Boulevard, with the sea at the end of the street.\n\nParasailing, jet skis, and the long walk back along the promenade. That's an ordinary Saturday here.\n\n📩 DM 'KEYS' to see what's available.",
+ EA:"What if a completed premium residence in Batumi could be yours with just a 10% down payment?\n\nPay the remaining balance over the next 12 months with our in-house installment plan.\n\nThat's just $4,800 to secure your residence at Guru Status.\n\nConstruction is complete, with only the final interior finishing works underway.\n\nLocated just 150 meters from the sea on Batumi's New Boulevard, Guru Status offers premium amenities, panoramic views, and one of the city's most desirable locations.\n\nMore than 90% of the residences have already been sold, with only a limited number remaining.\n\nSecure yours today with just a 10% down payment.",
+ EB:"Secure a premium residence in Batumi with just a 10% down payment - starting from $4,800, with 12-month internal installments available.\n\nGuru Status is a completed premium-class residential complex located just 150 meters from the sea on Batumi’s New Boulevard.\n\nDesigned for both living and investment, the complex offers premium amenities including indoor and outdoor swimming pools, spa, fitness center, restaurants, 24/7 reception, and security services.\n\nInvest in a high-demand seaside location with potential for up to 12% ROI.\n\nWith over 90% of residences already sold, availability is becoming limited.\n\nSo, hurry up and contact us today to discover available apartments at Guru Status.",
+ EC:"Guru Status is a completed premium-class residential complex located just 150 meters from the sea on Batumi’s New Boulevard.",
+ K:"გახდი პრემიუმ კლასის აპარტამენტის მფლობელი დასრულებულ კომპლექსში, ზღვისა და ბათუმის ბულვარის გარანტირებული ხედებით.\n\n• 10% პირველადი შენატანი\n• 12 თვე შიდა უპროცენტო განვადება\n\nGURU STATUS - კომპლექსი შექმნილია როგორც საცხოვრებლად, ასევე საინვესტიციოდ და გთავაზობთ ღია და დახურულ აუზებს, სპა ცენტრს, ფიტნეს დარბაზს, რესტორნებს, 24/7 რესეფშენსა და დაცვის მომსახურებას.\n\nგააკეთეთ ინვესტიცია მაღალმოთხოვნად ზღვისპირა ლოკაციაზე 12%-მდე უკუგების (ROI) პოტენციალით.\n\nბინების 90%-ზე მეტი უკვე გაყიდულია.\n\nდამატებითი დეტალებისთვის მოგვწერეთ აქვე",
+ RA:"Приобретайте премиальное жилье в Батуми с первоначальным взносом всего 10% — от $4,800, с возможностью беспроцентной рассрочки от застройщика на 12 месяцев.\n\nGuru Status — это готовый жилой комплекс премиум-класса, расположенный всего в 150 метрах от моря на Новом бульваре Батуми.\n\nКомплекс идеально подходит как для проживания, так и для инвестиций. К услугам жителей инфраструктура премиум-уровня: открытый и крытый бассейны, СПА, фитнес-центр, рестораны, круглосуточная рецепция и служба безопасности.\n\nИнвестируйте в востребованную локацию на побережье с потенциальной доходностью (ROI) до 12% годовых.\n\nБолее 90% апартаментов уже продано, выбор становится ограниченным.\n\nСвяжитесь с нами прямо сегодня, чтобы узнать о доступных квартирах в Guru Status!",
+ RB:"Guru Status - это завершенный жилой комплекс премиум-класса, расположенный всего в 150 метрах от моря на Новом бульваре Батуми, Грузия"
+};
+const MEDIA={
+ img_lifestyle:{t:"img",note:"4:5 still, aerial sea photo"},img_en_render:{t:"img",note:"1:1 tower render"},img_en_plan:{t:"img",note:"1:1 floor plan"},
+ img_ka_day:{t:"img",note:"1:1 tower render, day"},img_ka_night:{t:"img",note:"1:1 tower render, night"},img_ka_48k:{t:"img",note:"1:1 tower render, night"},
+ img_ru_render:{t:"img",note:"1:1 tower render"},img_ru_plan:{t:"img",note:"1:1 floor plan"},
+ vid_en_spokes:{t:"vid",dur:"0:50",note:"9:16, presenter + building footage"},vid_ru_spokes:{t:"vid",dur:"0:47",note:"9:16, presenter in Russian + drone"},
+ vid_en_walk:{t:"vid",dur:"0:24",note:"9:16, real lobby and apartment footage, EN text"},vid_ru_walk:{t:"vid",dur:"0:24",note:"9:16, RU text"},
+ vid_ka_walk:{t:"vid",dur:"0:24",note:"9:16, KA text “შეიძინე გარემონტებული ბინა ბათუმში”"},vid_clean_walk:{t:"vid",dur:"0:24",note:"9:16, no text overlay"}
+};
+for(const k in MEDIA){MEDIA[k].ar=MEDIA[k].t==="vid"?"9/16":(k==="img_lifestyle"?"4/5":"1/1")}
+const LANGN={EN:"English",KA:"Georgian",RU:"Russian"};
+const ORDER={style:["Lifestyle","Spokesperson video","Building walkthrough","Floor plan","Price-led render"],lang:["KA","RU","EN"],fmt:["Image","Video"],cta:["WhatsApp","Lead form","Website","DM"]};
+const REF=new Date("2026-10-28T12:00:00+04:00");
+const st={filters:{lang:"all",fmt:"all",style:"all",cta:"all"},group:"style",view:"grid"};
+let visible=[];
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+function days(d){const n=Math.max(1,Math.round((REF-new Date(d+"T12:00:00+04:00"))/864e5));return n+(n===1?" day":" days")}
+function fmtDate(d){const [y,m,dd]=d.split("-");return +dd+" "+["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][+m-1]}
+function label(key,v){return key==="lang"?LANGN[v]:v}
+function buildFilters(){
+  document.querySelectorAll(".crow[data-filter]").forEach(row=>{
+    const key=row.dataset.filter; const vals=ORDER[key];
+    const mk=(v,txt,n)=>`<button type="button" class="chip" data-k="${key}" data-v="${v}" aria-pressed="${st.filters[key]===v}">${esc(txt)}<span class="c">${n}</span></button>`;
+    row.insertAdjacentHTML("beforeend",mk("all","All",ADS.length)+vals.map(v=>mk(v,label(key,v),ADS.filter(a=>a[key]===v).length)).join(""));
+  });
+}
+function render(){
+  visible=ADS.filter(a=>Object.entries(st.filters).every(([k,v])=>v==="all"||a[k]===v));
+  document.getElementById("acount").textContent=`Showing ${visible.length} of ${ADS.length} ads`;
+  const g=document.getElementById("gallery");
+  const card=a=>{const md=MEDIA[a.m];const src=md.t==="img"?`media/${a.m}_t.jpg`:`media/${a.m}_p.jpg`;
+    return `<button type="button" class="acard" data-id="${a.id}" aria-label="Open ad ${a.id}">
+      <div class="thumb"><img src="${src}" alt="" loading="lazy"><span class="lng">${a.lang}</span>${a.lim?'<span class="warnb">Limited</span>':""}${md.t==="vid"?`<span class="play">▶ ${md.dur}</span>`:""}</div>
+      <div class="ainfo"><span class="st">${esc(a.style)}</span><span class="hd" lang="${a.lang==="KA"?"ka":a.lang==="RU"?"ru":"en"}">${esc(a.h)}</span><span class="mt">${a.cta} · ${fmtDate(a.d)} · ${days(a.d)}</span></div></button>`};
+  const C=st.view==="grid"?card:mockCell, gc=st.view==="grid"?"agrid":"agrid mkgrid";
+  if(st.group==="none"){g.innerHTML=`<div class="${gc}">${visible.map(C).join("")}</div>`;}
+  else{const key=st.group;g.innerHTML=ORDER[key].map(v=>{const items=visible.filter(a=>a[key]===v);if(!items.length)return"";return `<div class="ggroup"><h3>${esc(label(key,v))}<span>${items.length} ad${items.length>1?"s":""}</span></h3><div class="${gc}">${items.map(C).join("")}</div></div>`}).join("")||'<p class="count">No ads match these filters.</p>';}
+}
+document.getElementById("controls").addEventListener("click",e=>{const b=e.target.closest(".chip");if(!b)return;
+  if(b.dataset.view){st.view=b.dataset.view;document.querySelectorAll(".vchip").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));render();return}
+  st.filters[b.dataset.k]=b.dataset.v;document.querySelectorAll(`.chip[data-k="${b.dataset.k}"]`).forEach(x=>x.setAttribute("aria-pressed",String(x===b)));render()});
+document.getElementById("groupby").addEventListener("change",e=>{st.group=e.target.value;render()});
+const lb=document.getElementById("lb"); let cur=-1;
+function openAd(id){
+  const order=[...document.querySelectorAll("#gallery [data-id]")].map(x=>x.dataset.id);
+  cur=order.indexOf(id); const a=ADS.find(x=>x.id===id); const md=MEDIA[a.m];
+  const box=document.getElementById("lbmedia");
+  box.innerHTML=md.t==="vid"?`<video src="media/${a.m}.mp4" poster="media/${a.m}_p.jpg" controls playsinline preload="metadata"></video>`:`<img src="media/${a.m}.jpg" alt="Ad creative ${a.id}">`;
+  document.getElementById("lbstyle").textContent=a.style;
+  const h=document.getElementById("lbhead");h.textContent=a.h;h.lang=a.lang==="KA"?"ka":a.lang==="RU"?"ru":"en";
+  const bd=document.getElementById("lbbody");bd.textContent=BODY[a.b];bd.lang=h.lang;
+  document.getElementById("lbkv").innerHTML=[["Language",LANGN[a.lang]],["Format",a.fmt+(md.dur?" · "+md.dur:"")+" · "+md.note],["Button",a.cta],["Started",fmtDate(a.d)+" 2026 · "+days(a.d)],["Markets",a.mk],["Placements",a.pl],["Delivery",a.lim?"Limited: Meta says it did not meet certain requirements for some audiences":"Active"],["Library ID",a.id]].map(([k,v])=>`<dt>${k}</dt><dd>${esc(v)}</dd>`).join("");
+  document.getElementById("lblink").href="https://www.facebook.com/ads/library/?id="+a.id;
+  if(!lb.open)lb.showModal();
+  const v=box.querySelector("video"); if(v){v.play().catch(()=>{})}
+}
+function step(d){const order=[...document.querySelectorAll("#gallery [data-id]")].map(x=>x.dataset.id);if(!order.length)return;cur=(cur+d+order.length)%order.length;openAd(order[cur])}
+document.getElementById("gallery").addEventListener("click",e=>{
+  const c=e.target.closest(".acard");if(c){openAd(c.dataset.id);return}
+  const more=e.target.closest(".mk-more");if(more){more.closest(".mk").classList.add("open");return}
+  const det=e.target.closest(".mk-det");if(det){pauseAll();openAd(det.closest("[data-id]").dataset.id);return}
+  if(e.target.tagName==="VIDEO")return;
+  const mm=e.target.closest(".mk-media");if(!mm)return;
+  if(mm.dataset.vid){playIn(mm);return}
+  openAd(mm.closest("[data-id]").dataset.id)});
+function pauseAll(){document.querySelectorAll("#gallery video").forEach(v=>v.pause())}
+function playIn(box){
+  pauseAll();
+  const m=box.dataset.vid, feed=!!box.closest(".mk-fb,.mk-ig,.mk-ytf");
+  const pl=box.querySelector(".mk-play");if(pl)pl.remove();
+  const v=document.createElement("video");v.src=`media/${m}.mp4`;v.poster=`media/${m}_p.jpg`;v.setAttribute("playsinline","");v.playsInline=true;
+  if(feed)v.controls=true;else v.addEventListener("click",()=>{v.paused?v.play():v.pause()});
+  box.querySelector("img").replaceWith(v);v.play().catch(()=>{});
+}
+const VIEWS=[["grid","Thumbnails"],["fb","Facebook Feed"],["ig","Instagram Feed"],["story","Stories & Reels"],["yt","YouTube"]];
+function buildViews(){document.getElementById("viewrow").insertAdjacentHTML("beforeend",VIEWS.map(([v,t])=>`<button type="button" class="chip vchip" data-view="${v}" aria-pressed="${st.view===v}">${t}</button>`).join(""))}
+const CTA_TXT={"WhatsApp":"Send WhatsApp message","Lead form":"Get offer","Website":"See details","DM":""};
+const YT_CTA={"WhatsApp":"Contact us","Lead form":"Get quote","Website":"Learn more","DM":"Learn more"};
+const ICONS={heart:'<svg viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.2a4.3 4.3 0 0 1 7.5 2.6C19.5 15.4 12 20 12 20z"/></svg>',comment:'<svg viewBox="0 0 24 24"><path d="M20.5 11.5a8.5 8.5 0 0 1-12.4 7.6L3.5 20.5l1.4-4.4a8.5 8.5 0 1 1 15.6-4.6z"/></svg>',send:'<svg viewBox="0 0 24 24"><path d="M21.5 3.5 10.6 13.4M21.5 3.5l-6.6 17-4.3-7.1-7.1-4.3z"/></svg>',save:'<svg viewBox="0 0 24 24"><path d="M6 3.5h12v17l-6-4.8-6 4.8z"/></svg>'};
+function hl(a){return a.h.indexOf("(no headline)")===0?"":a.h}
+function lcap(a){return a.cta==="WhatsApp"?"WhatsApp":a.cta==="Lead form"?"Instant form":a.cta==="Website"?(a.lang==="RU"?"ru.guruholding.ge":"guruholding.ge"):""}
+function lg(a){return a.lang==="KA"?"ka":a.lang==="RU"?"ru":"en"}
+function mmedia(a,ar,contain){const md=MEDIA[a.m],img=md.t==="img"?`media/${a.m}.jpg`:`media/${a.m}_p.jpg`;
+  return `<div class="mk-media${contain?" contain":""}" style="aspect-ratio:${ar};--bgimg:url('${img}')"${md.t==="vid"?` data-vid="${a.m}"`:""}><img src="${img}" alt="" loading="lazy">${md.t==="vid"?'<span class="mk-play" aria-hidden="true">▶</span>':""}</div>`}
+function on(a,p){return a.pl.indexOf(p)>-1}
+function flabel(name,state){const t=state==="live"?'<span class="tag t-ok">Runs here</span>':state==="meta"?'<span class="tag t-sea" title="Runs on Facebook/Instagram; the Ad Library does not list positions">Runs on Meta</span>':'<span class="tag t-mute">Preview only</span>';return `<div class="mk-label"><span>${name}</span>${t}</div>`}
+function bodyTxt(a){return esc(BODY[a.b])}
+function mockFB(a){const md=MEDIA[a.m],ar=md.t==="vid"?"4/5":md.ar,c=CTA_TXT[a.cta],h=hl(a);
+  return flabel("Facebook Feed",on(a,"Facebook")?"live":"")+`<div class="mk mk-fb"><div class="mk-hd"><span class="mk-av">G</span><div class="mk-id"><b>GURU Holding • გურუ ჰოლდინგი</b><small>Sponsored · ◍</small></div><span class="mk-dots" aria-hidden="true">···</span></div><div class="mk-txt" lang="${lg(a)}">${bodyTxt(a)}</div><button type="button" class="mk-more">See more</button>${mmedia(a,ar,false)}${c?`<div class="mk-link"><div class="mk-lt"><small>${esc(lcap(a))}</small><b lang="${lg(a)}">${esc(h)}</b></div><span class="mk-btn">${c}</span></div>`:""}<div class="mk-acts" aria-hidden="true"><span>Like</span><span>Comment</span><span>Share</span></div></div>`}
+function mockIG(a){const md=MEDIA[a.m],ar=md.t==="vid"?"4/5":md.ar,c=CTA_TXT[a.cta];
+  return flabel("Instagram Feed",on(a,"Instagram")?"live":"")+`<div class="mk mk-ig"><div class="mk-hd"><span class="mk-av ring">G</span><div class="mk-id"><b>guru.holding</b><small>Sponsored</small></div><span class="mk-dots" aria-hidden="true">···</span></div>${mmedia(a,ar,false)}${c?`<div class="mk-igcta"><span>${c}</span><span aria-hidden="true">›</span></div>`:""}<div class="mk-igacts" aria-hidden="true">${ICONS.heart}${ICONS.comment}${ICONS.send}<span style="flex:1"></span>${ICONS.save}</div><div class="mk-txt ig" lang="${lg(a)}"><b>guru.holding</b> ${bodyTxt(a)}</div><button type="button" class="mk-more">more</button></div>`}
+function mockST(a){const md=MEDIA[a.m],c=CTA_TXT[a.cta],live=on(a,"Instagram")||on(a,"Facebook");
+  return flabel(md.t==="vid"?"Reels":"Stories",live?"meta":"")+`<div class="mk mk-st">${mmedia(a,"9/16",md.t==="img")}<div class="mk-st-top"><span class="mk-bar"></span><div class="mk-hd"><span class="mk-av sm">G</span><b>guru.holding</b><small>Sponsored</small></div></div><div class="mk-st-bot"><div class="mk-st-cap" lang="${lg(a)}">${bodyTxt(a)}</div>${c?`<span class="mk-st-cta">${c}</span>`:""}</div></div>`}
+function mockYT(a){const md=MEDIA[a.m],c=YT_CTA[a.cta],h=hl(a)||"GURU Holding";
+  if(md.t==="vid")return flabel("YouTube Shorts","")+`<div class="mk mk-yt">${mmedia(a,"9/16",false)}<div class="mk-yt-rail" aria-hidden="true"><i></i><i></i><i></i><i></i></div><div class="mk-yt-bot"><div class="mk-yt-id"><span class="mk-av sm">G</span><b>GURU Holding</b></div><div class="mk-yt-h" lang="${lg(a)}">${esc(h)}</div><div class="mk-yt-sp"><span class="mk-sp">Sponsored</span> · guruholding.ge</div><span class="mk-yt-cta">${c}</span></div></div>`;
+  return flabel("YouTube home feed","")+`<div class="mk mk-ytf">${mmedia(a,"16/9",true)}<div class="mk-ytf-row"><span class="mk-av">G</span><div><div class="mk-ytf-h" lang="${lg(a)}">${esc(h)}</div><div class="mk-yt-sp dark"><span class="mk-sp">Sponsored</span> · GURU Holding</div></div></div><span class="mk-ytf-cta">${c}</span></div>`}
+function mockCell(a){const f={fb:mockFB,ig:mockIG,story:mockST,yt:mockYT}[st.view];return `<div class="mkcell" data-id="${a.id}">${f(a)}<button type="button" class="mk-det">Full text and details</button></div>`}
+
+/* Google panel */
+const GA="AR11772514575335817217",GB="AR04024548303843622913";
+const GADS=[
+ {id:"CR13430147582500274177",ac:GA,img:"g_cr134",fmt:"Search, text",lang:"EN",f:"2026-04-27",l:"2026-10-27",d:182,live:true,h:"Guru Holding - Official Site - Move-In Ready: Batumi 2026",n:"Brand ad for Guru Status. Sitelinks include the old \"Project Start-Up\"; none for Subtropical."},
+ {id:"CR15906326933089026049",ac:GA,img:"g_cr159",fmt:"Search, text + image",lang:"EN",f:"2026-04-29",l:"2026-07-02",d:59,h:"0% Down Payment - 150 meters to the beach",n:"Lands on /batumi/apartment."},
+ {id:"CR09427801562337509377",ac:GA,img:"g_cr094",fmt:"Search, text + image",lang:"EN",f:"2026-04-29",l:"2026-07-02",d:59,h:"Batumi Property Investment - High-ROI Apartments in Batumi",n:"Claims \"Up to $22,000 annual net income\" and \"75% annual occupancy rate\".",flag:true},
+ {id:"CR10780637920374030337",ac:GA,img:"g_cr107",fmt:"Display, image",lang:"EN",f:"2026-05-13",l:"2026-06-18",d:37,h:"Invest in Guru Status Batumi",n:"The only display ad on record."},
+ {id:"CR16526186508852396033",ac:GA,img:"g_cr165",fmt:"Search, text",lang:"EN",f:"2026-04-29",l:"2026-06-18",d:51,h:"Batumi Property for Sale - Move-In Ready: Batumi 2026",n:"Sitelinks: 0% Down Payment, 150 meters to the beach."},
+ {id:"CR05108699436352012289",ac:GA,img:"",fmt:"Search, text + location",lang:"RU",f:"2026-04-29",l:"2026-06-18",d:51,h:"150 метров от моря",txt:"Заселение в 2026 году. Лучшая локация в 150м от…",n:"Location pinned in Kvariati. Recreated from Google's render, which is cut off."},
+ {id:"CR07204383785897426945",ac:GA,img:"g_cr072",fmt:"Search, text",lang:"PL",f:"2026-04-24",l:"2026-04-29",d:6,h:"Apartamenty na Sprzedaż Batumi",n:"Polish-language test, ran 6 days."},
+ {id:"CR17322275189840412673",ac:GA,img:"g_cr173",fmt:"Search, text",lang:"RU",f:"2026-01-19",l:"2026-04-16",d:75,h:"Новостройки в Батуми - от $ 1935 за кв.м.",n:""},
+ {id:"CR16583966325928361985",ac:GA,img:"g_cr16583",fmt:"Search, text",lang:"EN",f:"2026-01-19",l:"2026-01-27",d:9,h:"Buy apartments in Batumi - Eco-friendly materials",n:""},
+ {id:"CR02210969844524777473",ac:GB,img:"g_cr022",fmt:"Search, text",lang:"RU",f:"2025-09-24",l:"2026-02-09",d:111,h:"Новостройки в Батуми - от $ 1935 за кв.м.",n:"Claims ROI 8–12%, 0% down, 12-month plan.",flag:true},
+ {id:"CR01623770574469726209",ac:GB,img:"g_cr016",fmt:"Search, text",lang:"EN",f:"2025-11-05",l:"2026-02-09",d:69,h:"Apartments for living - From $1,935 per sq.m",n:"Claims ROI 8–12%.",flag:true},
+ {id:"CR10886067521971027969",ac:GB,img:"g_cr108",fmt:"Search, text",lang:"EN",f:"2025-11-05",l:"2026-02-09",d:64,h:"Apartments for living - 5 minutes' walk from the beach",n:"Claims ROI 8–12%.",flag:true}
+];
+const gst={f:"all"};
+function fD(d){const [y,m,dd]=d.split("-");return +dd+" "+["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][+m-1]+" "+y}
+function gcard(g){
+  const prev=g.img?`<img src="media/${g.img}.png" alt="Google's render of ad: ${esc(g.h)}" loading="lazy">`:`<div class="gtext"><small>Реклама</small><div class="gurl"><b>GURU Holding</b><span>ru.guruholding.ge</span></div><div class="gh">${esc(g.h)}</div><div class="gd">${esc(g.txt)}</div></div>`;
+  return `<article class="gcell">${flabel(g.fmt.indexOf("Display")===0?"Google Display":"Google Search",g.live?"live":"").replace('Runs here',"Live now").replace('Preview only',"Ended")}<div class="mk mk-g"><div class="mk-gbar" aria-hidden="true"><span></span></div><div class="mk-gbody">${prev}</div></div><dl class="kv gkv"><dt>Format</dt><dd>${esc(g.fmt)} · ${g.lang}</dd><dt>Ran</dt><dd>${fD(g.f)} to ${g.live?"now":fD(g.l)} · ${g.d} days</dd><dt>Account</dt><dd>${g.ac===GA?"A":"B"} (…${g.ac.slice(-4)})</dd>${g.n?`<dt>Note</dt><dd>${g.flag?'<span class="tag t-flag">Claim</span> ':""}${esc(g.n)}</dd>`:""}</dl><a href="https://adstransparency.google.com/advertiser/${g.ac}/creative/${g.id}?region=anywhere" target="_blank" rel="noopener">Open in Transparency Center</a></article>`}
+function gRender(){const list=GADS.filter(g=>gst.f==="all"||(gst.f==="live")===!!g.live);document.getElementById("ggrid").innerHTML=list.map(gcard).join("")}
+(function(){const row=document.getElementById("gfilter");const opts=[["all","All",GADS.length],["live","Live",GADS.filter(g=>g.live).length],["ended","Ended",GADS.filter(g=>!g.live).length]];
+  row.insertAdjacentHTML("beforeend",opts.map(([v,t,n])=>`<button type="button" class="chip" data-gf="${v}" aria-pressed="${gst.f===v}">${t}<span class="c">${n}</span></button>`).join(""));
+  row.addEventListener("click",e=>{const b=e.target.closest(".chip");if(!b)return;gst.f=b.dataset.gf;row.querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));gRender()});
+  gRender();
+  document.querySelector(".ptabs").addEventListener("click",e=>{const t=e.target.closest(".ptab");if(!t)return;pauseAll();document.querySelectorAll(".ptab").forEach(x=>x.setAttribute("aria-selected",String(x===t)));document.getElementById("p-meta").hidden=t.dataset.p!=="meta";document.getElementById("p-google").hidden=t.dataset.p!=="google"});
+})();
+document.getElementById("lbclose").addEventListener("click",()=>lb.close());
+document.getElementById("lbprev").addEventListener("click",()=>step(-1));
+document.getElementById("lbnext").addEventListener("click",()=>step(1));
+lb.addEventListener("close",()=>{document.getElementById("lbmedia").innerHTML=""});
+lb.addEventListener("click",e=>{if(e.target===lb)lb.close()});
+lb.addEventListener("keydown",e=>{if(e.key==="ArrowRight")step(1);if(e.key==="ArrowLeft")step(-1)});
+buildFilters();buildViews();render();
+
+/* georgian ads */
+
+/* Subtropical banners */
+const BANS=[{"n": 1, "t": "Emotion", "h": "Your mornings, slower.", "pt": "Mornings at Guru Subtropical start slowly: sea in front, green hills behind. Pre-sales are open in Gonio.", "cta": "Learn more"}, {"n": 2, "t": "Emotion", "h": "Where the mountains meet the sea", "pt": "In Kvariati, the green hills run straight into the sea. Guru Subtropical is a low-rise home right there.", "cta": "Learn more"}, {"n": 3, "t": "Emotion", "h": "Quiet is the new luxury.", "pt": "Low-rise homes among subtropical greenery, above the sea and away from the towers. Pre-sales are open.", "cta": "Learn more"}, {"n": 5, "t": "Emotion", "h": "Breathe out.", "pt": "No towers, no traffic. Green hills, sea air and a terrace that's yours. Guru Subtropical, Gonio.", "cta": "Learn more"}, {"n": 6, "t": "Emotion", "h": "Sunsets come standard.", "pt": "Homes on a green hill above the Black Sea, where evenings end with the sun going down over the water.", "cta": "Learn more"}, {"n": 20, "t": "Emotion", "h": "Peace in Gonio nature.", "pt": "Green hills, sea air and room to breathe, minutes from the beach. Discover Guru Subtropical in Gonio.", "cta": "Learn more"}, {"n": 21, "t": "Sea", "h": "Clear water. Quiet hills.", "pt": "The sea at Gonio is a few minutes from your door at Guru Subtropical. Pre-sales are open.", "cta": "Learn more"}, {"n": 23, "t": "Coastal escape", "h": "Your coastal escape.", "pt": "Green hills, clear sea and a home of your own in Gonio. Meet Guru Subtropical.", "cta": "Learn more"}, {"n": 25, "t": "Coastal escape", "h": "A coastal escape for every season.", "pt": "Summer swims, autumn sunsets, quiet winters by the sea. Your home at Guru Subtropical.", "cta": "Learn more"}, {"n": 7, "t": "Lifestyle", "h": "Weekends that feel like holidays.", "pt": "Pool, tennis, fitness and a shuttle to the beach. Weekends at Guru Subtropical feel like holidays.", "cta": "Learn more"}, {"n": 8, "t": "Lifestyle", "h": "Room for your family to grow.", "pt": "Playgrounds, gardens and space to run, a few minutes from the sea. A home where your family can grow.", "cta": "Learn more"}, {"n": 9, "t": "Place", "h": "The quieter side of Batumi.", "pt": "15 minutes from Batumi, a world away from its noise. Discover Guru Subtropical in Gonio.", "cta": "Learn more"}, {"n": 10, "t": "Place", "h": "Life between the hills and the sea.", "pt": "Low-rise blocks and villas wrapped in subtropical green, above the Black Sea. Guru Subtropical, Kvariati.", "cta": "Learn more"}, {"n": 11, "t": "Place", "h": "Your coffee comes with a view.", "pt": "Long mornings, a terrace, and the Black Sea below. Guru Subtropical pre-sales are open.", "cta": "Learn more"}, {"n": 12, "t": "Proof", "h": "Built by people who deliver.", "pt": "Start Up, Residence, Status: three Batumi buildings delivered. Now the same team is building Guru Subtropical in Gonio.", "cta": "Learn more"}, {"n": 14, "t": "Proof", "h": "Our fourth building. Our first in the hills.", "pt": "After three buildings in Batumi, Guru Holding is building in Gonio's green hills. Meet Guru Subtropical.", "cta": "Learn more"}];
+const bst={view:"banner",theme:"all"};
+const BVIEWS=[["banner","Banner"],["ig","Instagram Feed"],["fb","Facebook Feed"],["story","Stories"]];
+const BTHEMES=["Emotion","Sea","Coastal escape","Lifestyle","Place","Proof"];
+function bsrc(b){return `media/ban/b${String(b.n).padStart(2,"0")}.jpg`}
+function bmedia(b,story){const src=bsrc(b);return `<div class="mk-media${story?" contain":""}" style="aspect-ratio:${story?"9/16":"4/5"};--bgimg:url('${src}')"><img src="${src}" alt="Banner ${b.n}: ${esc(b.h)}" loading="lazy"></div>`}
+function bcell(b){
+  const num=String(b.n).padStart(2,"0"), lab=`<div class="mk-label"><span>${num} · ${b.t}</span><a class="tag t-mute" href="${bsrc(b)}" target="_blank" rel="noopener">Full size</a></div>`;
+  if(bst.view==="banner")return `<div class="mkcell">${lab}<a class="mk" style="border-radius:4px;display:block" href="${bsrc(b)}" target="_blank" rel="noopener">${bmedia(b,false)}</a></div>`;
+  if(bst.view==="ig")return `<div class="mkcell">${lab}<div class="mk mk-ig"><div class="mk-hd"><span class="mk-av ring">G</span><div class="mk-id"><b>guru.holding</b><small>Sponsored</small></div><span class="mk-dots" aria-hidden="true">···</span></div>${bmedia(b,false)}<div class="mk-igcta"><span>${b.cta}</span><span aria-hidden="true">›</span></div><div class="mk-igacts" aria-hidden="true">${ICONS.heart}${ICONS.comment}${ICONS.send}<span style="flex:1"></span>${ICONS.save}</div><div class="mk-txt ig"><b>guru.holding</b> ${esc(b.pt)}</div><button type="button" class="mk-more">more</button></div></div>`;
+  if(bst.view==="fb")return `<div class="mkcell">${lab}<div class="mk mk-fb"><div class="mk-hd"><span class="mk-av">G</span><div class="mk-id"><b>GURU Holding • გურუ ჰოლდინგი</b><small>Sponsored · ◍</small></div><span class="mk-dots" aria-hidden="true">···</span></div><div class="mk-txt">${esc(b.pt)}</div><button type="button" class="mk-more">See more</button>${bmedia(b,false)}<div class="mk-link"><div class="mk-lt"><small>${b.cta.indexOf("WhatsApp")>-1?"WhatsApp":"guruholding.ge"}</small><b>Guru Subtropical · Gonio</b></div><span class="mk-btn">${b.cta}</span></div><div class="mk-acts" aria-hidden="true"><span>Like</span><span>Comment</span><span>Share</span></div></div></div>`;
+  return `<div class="mkcell">${lab}<div class="mk mk-st">${bmedia(b,true)}<div class="mk-st-top"><span class="mk-bar"></span><div class="mk-hd"><span class="mk-av sm">G</span><b>guru.holding</b><small>Sponsored</small></div></div><div class="mk-st-bot"><span class="mk-st-cta">${b.cta}</span></div></div></div>`;
+}
+function bRender(){document.getElementById("bgrid").innerHTML=BANS.filter(b=>bst.theme==="all"||b.t===bst.theme).map(bcell).join("")}
+(function(){
+  document.getElementById("bview").insertAdjacentHTML("beforeend",BVIEWS.map(([v,t])=>`<button type="button" class="chip vchip" data-bv="${v}" aria-pressed="${bst.view===v}">${t}</button>`).join(""));
+  document.getElementById("btheme").insertAdjacentHTML("beforeend",[["all","All",BANS.length]].concat(BTHEMES.map(t=>[t,t,BANS.filter(b=>b.t===t).length])).map(([v,t,n])=>`<button type="button" class="chip" data-bt="${v}" aria-pressed="${bst.theme===v}">${t}<span class="c">${n}</span></button>`).join(""));
+  document.getElementById("bcontrols").addEventListener("click",e=>{const c=e.target.closest(".chip");if(!c)return;
+    if(c.dataset.bv){bst.view=c.dataset.bv;document.querySelectorAll("[data-bv]").forEach(x=>x.setAttribute("aria-pressed",String(x===c)))}
+    else{bst.theme=c.dataset.bt;document.querySelectorAll("[data-bt]").forEach(x=>x.setAttribute("aria-pressed",String(x===c)))}
+    bRender()});
+  document.getElementById("bgrid").addEventListener("click",e=>{const m=e.target.closest(".mk-more");if(m)m.closest(".mk").classList.add("open")});
+  bRender();
+})();
+
+</script>
