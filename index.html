@@ -111,6 +111,7 @@ tr.hl td{background:var(--accent-soft)}
 .kpi{background:var(--surface);padding:.9rem 1rem;display:grid;gap:.15rem;align-content:start}
 .kpi .v{font-family:var(--f-display);font-weight:700;font-size:1.7rem;font-variant-numeric:tabular-nums;line-height:1.1}
 .kpi .l{font-size:.8rem;color:var(--muted);line-height:1.4}
+.kpi .s{font-size:.72rem;color:var(--muted);opacity:.85;margin-top:.25rem;line-height:1.4}
 
 /* bars */
 .bars{display:grid;gap:.4rem;max-width:44rem}
@@ -344,7 +345,7 @@ footer{padding-block:2rem 3rem;color:var(--muted);font-size:.8rem;border-top:1px
 
 
 <nav class="rail" aria-label="Chapters"><div class="wrap">
-  <a href="#project"><b>01</b>Project</a><a href="#market"><b>02</b>Market &amp; buyers</a><a href="#competition"><b>03</b>Competition</a><a href="#messaging"><b>04</b>Messaging</a><a href="#ads"><b>05</b>Current ads</a><a href="#banners"><b>06</b>Creative directions</a><a href="#launch"><b>07</b>Access</a>
+  <a href="#project"><b>01</b>Project</a><a href="#market"><b>02</b>Market</a><a href="#targets"><b>03</b>Target ideas</a><a href="#competition"><b>04</b>Competition</a><a href="#messaging"><b>05</b>Messaging</a><a href="#ads"><b>06</b>Current ads</a><a href="#banners"><b>07</b>Creative directions</a><a href="#launch"><b>08</b>Access</a>
 </div></nav>
 
 <header class="cover wrap" id="summary">
@@ -372,15 +373,16 @@ footer{padding-block:2rem 3rem;color:var(--muted);font-size:.8rem;border-top:1px
 </div></section>
 
 <section class="ch" id="market"><div class="wrap stack">
-  <div class="ch-head"><div class="ch-num">02 · Market &amp; buyers</div><h2>A cooling market where buyers compare, so trust and lifestyle win</h2></div>
+  <div class="ch-head"><div class="ch-num">02 · Market</div><h2>Batumi sales are still growing, but so is unsold stock: buyers have choice, so trust and lifestyle win</h2><p class="sowhat">Figures are for Batumi unless marked Gonio–Kvariati. Galt &amp; Taggart's "Batumi" includes Gonio–Kvariati and Makhinjauri.</p></div>
   <div class="kpis">
-    <div class="kpi"><div class="v">17,478</div><div class="l">Batumi sales in 2025, +15% (G&amp;T)</div></div>
-    <div class="kpi"><div class="v">$2,048</div><div class="l">Gonio–Kvariati average per m²</div></div>
-    <div class="kpi"><div class="v">12,400</div><div class="l">unsold new units, end-2025, +14%</div></div>
-    <div class="kpi"><div class="v">−11.8%</div><div class="l">July 2026 sales vs last year (Colliers)</div></div>
+    <div class="kpi"><div class="v">17,478</div><div class="l">apartments sold in Batumi in 2025, +15% vs 2024</div><div class="s">Galt &amp; Taggart, via <a href="https://bm.ge/en/news/batumi-real-estate-market-hits-13-bln-in-2025-with-strong-growth" target="_blank" rel="noopener">BM.ge</a></div></div>
+    <div class="kpi"><div class="v">7,838</div><div class="l">apartments sold in Batumi in H1 2026, +11.4% vs H1 2025</div><div class="s">Colliers Georgia, via <a href="https://www.eva-estate.com/news/issue.asp?id=39" target="_blank" rel="noopener">Sputnik Georgia / Eva Estate</a></div></div>
+    <div class="kpi"><div class="v">$2,048</div><div class="l">average new-build price per m² in Gonio–Kvariati, 2025 (386 apartments sold there)</div><div class="s">Galt &amp; Taggart, <a href="https://ramad.bog.ge/galt/yepiN99l-Regional-Residential-Real-Estate_ENG_2025.pdf" target="_blank" rel="noopener">Batumi report, March 2026</a></div></div>
+    <div class="kpi"><div class="v">12,400</div><div class="l">unsold apartments in surveyed Batumi developer projects, end of 2025, +14% vs 2024</div><div class="s">Galt &amp; Taggart, via <a href="https://www.investor.ge/2026/04/20/sector-snapshot-batumi-residential-real-estate/" target="_blank" rel="noopener">Investor.ge</a></div></div>
   </div>
+  <p class="note-s">2026 outlook: Galt &amp; Taggart expects Batumi new-build sales to stay broadly flat in 2026, with price growth slowing to 4–6% (<a href="https://commersant.ge/en/news/economics/recent-escalation-in-iran-and-related-regional-tensions-could-benefit-batumi-in-medium-term-galttaggart" target="_blank" rel="noopener">Commersant, March 2026</a>).</p>
   <figure class="ex">
-      <figcaption><span class="ext">Who buys in Batumi: share of developer sales, 2025</span></figcaption>
+      <figcaption><span class="ext">Who buys in Batumi: share of apartment sales, 2025 (small figure: Q1 2026)</span></figcaption>
       <div class="bars">
         <div class="bar-row"><span>Georgia</span><span class="bar-cell"><span class="bar" style="--w:48;--max:50"></span><b>48%</b><small>Q1 2026: 37%</small></span></div>
         <div class="bar-row"><span>Israel</span><span class="bar-cell"><span class="bar" style="--w:13;--max:50"></span><b>13%</b><small>10%</small></span></div>
@@ -390,8 +392,12 @@ footer{padding-block:2rem 3rem;color:var(--muted);font-size:.8rem;border-top:1px
         <div class="bar-row"><span>Central Asia</span><span class="bar-cell"><span class="bar" style="--w:3;--max:50"></span><b>3%</b><small>n/a</small></span></div>
         <div class="bar-row"><span>Arab countries</span><span class="bar-cell"><span class="bar" style="--w:3;--max:50"></span><b>~3%</b><small>3%</small></span></div>
       </div>
-      <p class="src">Galt &amp; Taggart developer survey 2025 and Q1 2026 (via GBC, HomesOverseas). Shares vary ±3 points between outlets. Colliers registry data: foreigners 45% in H1 2026.</p>
+      <p class="src">2025: Galt &amp; Taggart, via <a href="https://gbc.ge/en/news/Economics-news/batumi-residential-real-estate-market-grows-15-in-2025-galt-taggart" target="_blank" rel="noopener">GBC</a>. Q1 2026: Galt &amp; Taggart developer survey, via <a href="https://www.homesoverseas.ru/eng/news/Opublikovan_otchet_po_rynku_nedvizhimosti_Batumi_za_1-j_kvartal_2026_goda" target="_blank" rel="noopener">HomesOverseas</a>. H1 2026: foreigners about 45% of surveyed developer sales (Galt &amp; Taggart, via <a href="https://btuai.ge/en/foreigners-buy-nearly-half-of-batumi-apartments-who-creates-demand/" target="_blank" rel="noopener">BTUAI</a>). The 2025 Arab share is approximate.</p>
     </figure>
+</div></section>
+
+<section class="ch" id="targets"><div class="wrap stack">
+  <div class="ch-head"><div class="ch-num">03 · Target ideas</div><h2>Ideas for potential targets</h2></div>
   <div class="personas">
     <article class="pe"><div class="who"><h3>1. Georgians in Georgia</h3><span class="tag t-ok">Core</span></div><dl><dt>Wants</dt><dd>A trusted developer, installments, a summer home by the sea that also earns</dd><dt>Reach</dt><dd>Facebook and Instagram in Georgian; Tbilisi, Batumi, Kutaisi</dd></dl><div class="hook"><b>Hook:</b> peace in Gonio nature, built by the team behind Status.</div></article>
     <article class="pe"><div class="who"><h3>2. Georgians abroad</h3><span class="tag t-ok">Core</span></div><dl><dt>Wants</dt><dd>A home to come back to every summer; buying remotely with installments</dd><dt>Reach</dt><dd>Meta in Georgian in the US, Greece, Italy, Spain, Germany</dd></dl><div class="hook"><b>Hook:</b> your coastal escape at home, bought from wherever you live.</div></article>
@@ -402,7 +408,7 @@ footer{padding-block:2rem 3rem;color:var(--muted);font-size:.8rem;border-top:1px
 </div></section>
 
 <section class="ch" id="competition"><div class="wrap stack">
-  <div class="ch-head"><div class="ch-num">03 · Competition <span class="tag t-warn" style="margin-left:.5rem;letter-spacing:0;text-transform:none;font-family:var(--f-body)">This section is generated by AI</span></div><h2>Gonio is filling with tall towers; low-rise at a premium price is almost empty</h2><p class="sowhat">This whole section was generated by AI from public listings and has not been verified by Flow. Treat prices, heights and positions as indicative.</p></div>
+  <div class="ch-head"><div class="ch-num">04 · Competition <span class="tag t-warn" style="margin-left:.5rem;letter-spacing:0;text-transform:none;font-family:var(--f-body)">This section is generated by AI</span></div><h2>Gonio is filling with tall towers; low-rise at a premium price is almost empty</h2><p class="sowhat">This whole section was generated by AI from public listings and has not been verified by Flow. Treat prices, heights and positions as indicative.</p></div>
   <figure class="ex">
     <figcaption><span class="ext">Positioning map: building height vs price per m²</span></figcaption>
     <div class="chartbox">
@@ -449,7 +455,7 @@ footer{padding-block:2rem 3rem;color:var(--muted);font-size:.8rem;border-top:1px
 </div></section>
 
 <section class="ch" id="messaging"><div class="wrap stack">
-  <div class="ch-head"><div class="ch-num">04 · Messaging</div><h2>Lead with a feeling or a solved problem; use facts only as proof</h2></div>
+  <div class="ch-head"><div class="ch-num">05 · Messaging</div><h2>Lead with a feeling or a solved problem; use facts only as proof</h2></div>
   <figure class="ex">
     <figcaption><span class="ext">Message house: sell the life it gives, use the facts as proof</span></figcaption>
     <div class="house" style="max-width:none">
@@ -466,7 +472,7 @@ footer{padding-block:2rem 3rem;color:var(--muted);font-size:.8rem;border-top:1px
 </div></section>
 
 <section class="ch" id="ads"><div class="wrap stack">
-  <div class="ch-head"><div class="ch-num">05 · Current Guru ads</div><h2>Guru's current ads (all for Guru Status, the previous project)</h2></div>
+  <div class="ch-head"><div class="ch-num">06 · Current Guru ads</div><h2>Guru's current ads (all for Guru Status, the previous project)</h2></div>
   <div class="ptabs" role="tablist" aria-label="Ad platform"><button type="button" class="ptab" role="tab" aria-selected="true" data-p="meta">Meta<small>24 live</small></button><button type="button" class="ptab" role="tab" aria-selected="false" data-p="google">Google<small>12 on record · 1 live</small></button></div>
   <div id="p-meta" class="stack" style="gap:1.75rem">
   <div class="controls" id="controls">
@@ -505,7 +511,7 @@ footer{padding-block:2rem 3rem;color:var(--muted);font-size:.8rem;border-top:1px
 </dialog>
 
 <section class="ch" id="banners"><div class="wrap stack">
-  <div class="ch-head"><div class="ch-num">06 · Creative directions by Gia Ananidze</div><h2>Gia's creative direction ideas: 16 feed banners that sell the life, not the floor plan</h2><p class="sowhat"><b>These are creative direction ideas created by Gia Ananidze</b> to show the look, tone and message for Subtropical; they are concepts for discussion, not final ads. 1080×1350 for Meta and Instagram feeds, in Guru's own fonts. Most banners sell a feeling or a solved problem; facts appear only as proof. Use <b>View as</b> to see each one in a feed with a suggested primary text. Files: <a href="https://drive.google.com/drive/folders/1FCz-Hrd8cC6sC2r7Tujd5keu3YPvWklF" target="_blank" rel="noopener">Google Drive folder</a>.</p></div>
+  <div class="ch-head"><div class="ch-num">07 · Creative directions by Gia Ananidze</div><h2>Gia's creative direction ideas: 16 feed banners that sell the life, not the floor plan</h2><p class="sowhat"><b>These are creative direction ideas created by Gia Ananidze</b> to show the look, tone and message for Subtropical; they are concepts for discussion, not final ads. 1080×1350 for Meta and Instagram feeds, in Guru's own fonts. Most banners sell a feeling or a solved problem; facts appear only as proof. Use <b>View as</b> to see each one in a feed with a suggested primary text. Files: <a href="https://drive.google.com/drive/folders/1FCz-Hrd8cC6sC2r7Tujd5keu3YPvWklF" target="_blank" rel="noopener">Google Drive folder</a>.</p></div>
   <div class="controls" id="bcontrols"><div class="crow" id="bview"><span class="cl">View as</span></div><div class="crow" id="btheme"><span class="cl">Theme</span></div></div>
   <div class="agrid mkgrid" id="bgrid"></div>
   <div class="panel"><h3>Before launch</h3><ul class="dot">
@@ -515,17 +521,17 @@ footer{padding-block:2rem 3rem;color:var(--muted);font-size:.8rem;border-top:1px
 </div></section>
 
 <section class="ch" id="launch"><div class="wrap stack">
-  <div class="ch-head"><div class="ch-num">07 · Access</div><h2>Access we need from Guru</h2></div>
+  <div class="ch-head"><div class="ch-num">08 · Access</div><h2>Access we need from Guru</h2></div>
   <div class="panel"><ol class="num">
       <li><b>Meta Business Manager:</b> Facebook page, Instagram @guru.holding, ad account(s), Pixel 1656160194893607, WhatsApp Business.</li>
-      <li><b>Google Ads:</b> both accounts (Guru Construction LLC).</li>
+      <li><b>Google Ads:</b> both ad accounts Google shows for Guru Construction LLC: the current one (running since April 2026) and an older one (September 2025 to February 2026).</li>
       <li><b>Google Tag Manager:</b> GTM-MGH2X444.</li>
       <li><b>Google Analytics 4:</b> G-9DC1J990TL, G-KB81HXK6R8, G-P0QMDBRPD1.</li>
-      <li><b>YouTube</b> channel (or we create one).</li>
-      <li><b>Google Business Profile</b> (or we create one).</li>
+      <li><b>YouTube</b> channel (if it doesn't exist, we create one).</li>
+      <li><b>Google Business Profile</b> (if it doesn't exist, we create one).</li>
       <li><b>Google Search Console.</b></li>
       <li><b>Website (Tilda)</b> editor access.</li>
-      <li><b>CRM</b> access or a weekly lead export.</li>
+      <li><b>CRM</b> access.</li>
   </ol></div>
 </div></section>
 
